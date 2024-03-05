@@ -10,9 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_04_144102) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_101250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.bigint "interview_question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interview_question_id"], name: "index_answers_on_interview_question_id"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_bookmarks_on_question_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "interview_questions", force: :cascade do |t|
+    t.bigint "interview_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interview_id"], name: "index_interview_questions_on_interview_id"
+    t.index ["question_id"], name: "index_interview_questions_on_question_id"
+  end
+
+  create_table "interviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "feedback"
+    t.boolean "finished", default: false
+    t.string "role"
+    t.integer "number_of_questions"
+    t.string "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_interviews_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "content"
+    t.string "category"
+    t.string "language"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +70,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_144102) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "interview_questions"
+  add_foreign_key "bookmarks", "questions"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "interview_questions", "interviews"
+  add_foreign_key "interview_questions", "questions"
+  add_foreign_key "interviews", "users"
 end
