@@ -1,5 +1,5 @@
 class InterviewsController < ApplicationController
-  before_action :set_interview, only: [:show, :create]
+  before_action :set_interview, only: [:show]
   skip_before_action :authenticate_user!
 
   def index
@@ -8,7 +8,6 @@ class InterviewsController < ApplicationController
   def show
     @answer = Answer.new
     @questions = Question.all.sample(10)
-    
   end
 
   def new

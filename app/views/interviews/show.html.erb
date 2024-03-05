@@ -1,1 +1,6 @@
 <h1>hello</h1>
+<%= @questions.each  %>
+<%= simple_form_for [@interview_question, @answer] do |a| %>
+  <%= a.input :content %>
+  <%= a.submit %>
+<% end %>
