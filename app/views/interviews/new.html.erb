@@ -1,0 +1,8 @@
+<h2>hello</h2>
+
+<%= simple_form_for(@interview) do |f| %>
+  <%= f.input :role, class: "role-card" %>
+  <%= f.input :number_of_questions, collection: [["HTML, CSS, JavaScript"], ["HTML, CSS, TypeScript"]], prompt: "Select a category" %>
+  <%= f.input :language, as: :check_boxes, collection: [["HTML"], ["CSS"], ["JavaScript"]], prompt: "Select a category" %>
+  <%= f.submit %>
+<% end %>
