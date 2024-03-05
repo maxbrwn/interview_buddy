@@ -7,7 +7,7 @@ class InterviewsController < ApplicationController
 
   def show
     @answer = Answer.new
-    @questions = Question.all.sample(10)
+    @interview_questions = @interview.interview_questions
   end
 
   def new

@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :interviews
-
+  resources :interview_questions do
+    resources :answers, only: [:create]
+  end
 end

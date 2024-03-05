@@ -1,1 +1,14 @@
 <h1>hello</h1>
+<% question_array = @interview_questions.map do |interview_question| %>
+<p><%= interview_question.question.content %></p>
+<% end %>
+<% until question_array.size == 0  %>
+  <% @interview_questions.each do |interview_question| %>
+    <%= question_array[0] %>
+      <%  simple_form_for [interview_question, @answer] do |a| %>
+      <% a.input :content %>
+      <% a.submit %>
+      <% end %>
+    <%= question_array.shift %>
+  <% end %>
+<% end %>
