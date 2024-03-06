@@ -1,5 +1,5 @@
 class InterviewsController < ApplicationController
-  before_action :set_interview, only: [:show, :next_question]
+  before_action :set_interview, only: [:show, :next_question, :feedback]
   skip_before_action :authenticate_user!
 
   def index
@@ -8,7 +8,7 @@ class InterviewsController < ApplicationController
   def show
     @answer = Answer.new
     @interview_questions = @interview.interview_questions
-    session[:current_index] ||= 0 
+    session[:current_index] ||= 0
   end
 
   def new
@@ -25,7 +25,7 @@ class InterviewsController < ApplicationController
         @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
         @interview_question.save
       end
-      redirect_to interview_path(@interview)
+      redirect_to interview__path(@interview)
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,6 +34,17 @@ class InterviewsController < ApplicationController
   def next_question
     session[:current_index] += 1 if session[:current_index].present?
     redirect_to interview_path(@interview)
+  end
+
+  def feedback
+    feedback_string = ""
+   # @interview = Interview.find(params[:interview_id])
+    @answers = @interview.interview_questions[session[:current_index ] - 1].answers
+
+    @answers.each do |answer|
+      feedback_string << answer.answer_feedback
+    end
+    @interview.update(feedback: feedback_string)
   end
 
   private

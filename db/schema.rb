@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_114637) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_06_145545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_114637) do
     t.bigint "interview_question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "answer_feedback"
     t.index ["interview_question_id"], name: "index_answers_on_interview_question_id"
   end
 
@@ -37,7 +38,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_114637) do
     t.bigint "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "answer_feedback"
     t.index ["interview_id"], name: "index_interview_questions_on_interview_id"
     t.index ["question_id"], name: "index_interview_questions_on_question_id"
   end

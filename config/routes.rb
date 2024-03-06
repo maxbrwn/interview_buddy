@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   resources :interviews do
     member do
+      get "/feedback", to: "interviews#feedback"
       post :next_question
     end
   end
   resources :interview_questions do
-    resources :answers, only: [:create]
+    resources :answers, only: [:create, :show]
   end
 end
