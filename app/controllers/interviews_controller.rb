@@ -1,5 +1,5 @@
 class InterviewsController < ApplicationController
-  before_action :set_interview, only: [:show]
+  before_action :set_interview, only: [:show, :next_question]
   skip_before_action :authenticate_user!
 
   def index
@@ -7,8 +7,8 @@ class InterviewsController < ApplicationController
 
   def show
     @answer = Answer.new
-
     @interview_questions = @interview.interview_questions
+    session[:current_index] ||= 0 
   end
 
   def new
@@ -29,6 +29,11 @@ class InterviewsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def next_question
+    session[:current_index] += 1 if session[:current_index].present?
+    redirect_to interview_path(@interview)
   end
 
   private
