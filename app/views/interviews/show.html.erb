@@ -1,18 +1,12 @@
-<h1>hello</h1>
+
 <% question_array = @interview_questions.map do |interview_question| %>
-<p><%= interview_question.question.content %></p>
-<% end %>
-<% until question_array.size == 0  %>
-  <% @interview_questions.each do |interview_question| %>
-    <%= question_array[0] %>
-      <%  simple_form_for [interview_question, @answer] do |a| %>
-      <% a.input :content %>
-      <% a.submit %>
-      <% end %>
-    <%= question_array.shift %>
-  <% end %>
+<% interview_question.question.content %>
 <% end %>
 
-<p>
-  <%= interview_question.feedback %>
-</p>
+
+<%if session[:current_index] <= question_array.size%>
+<%= question_array[session[:current_index]] %>
+  <%= simple_form_for [@interview_questions[session[:current_index]], @answer] do |a| %>
+    <%= a.input :content %>
+    <%= a.button :submit, class: "btn btn-primary" %>
+  <% end %>
