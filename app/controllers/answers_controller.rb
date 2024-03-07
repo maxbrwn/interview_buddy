@@ -8,8 +8,9 @@ class AnswersController < ApplicationController
     @answer.interview_question = InterviewQuestion.find(params[:interview_question_id])
     interview = @answer.interview_question.interview
     if @answer.save
-      @answer.feedback
+      # @answer.feedback
       session[:current_index] += 1 unless session[:current_index] >= interview.interview_questions.size - 1
+
       redirect_to interview_path(@answer.interview_question.interview)
     else
       render 'interviews/show', status: :unprocessable_entity
