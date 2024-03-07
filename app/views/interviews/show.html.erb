@@ -1,16 +1,26 @@
 
+<%# Displaying the Question:%>
 <% question_array = @interview_questions.map do |interview_question| %>
 <% interview_question.question.content %>
 <% end %>
 
-
-<%if session[:current_index] < question_array.size%>
-  <%= question_array[session[:current_index]] %>
-    <%= simple_form_for [@interview_questions[session[:current_index]], @answer] do |a| %>
-      <%= a.input :content %>
-      <%= a.button :submit, class: "btn btn-primary" %>
-    <% end %>
-<% elsif session[:current_index] == question_array.size%>
-  <%= "Thank you for your commitment!" %>
-  <%= link_to "Submit", feedback_interview_path(@interview)%>
+<%# Display the answer form:%>
+<%= question_array[session[:current_index]] %>
+<%= simple_form_for [@interview_questions[session[:current_index]], @answer] do |a| %>
+  <%= a.input :content %>
+  <%= a.button :submit, class: "btn btn-primary" %>
 <% end %>
+
+<div data-controller= "interview-buttons">
+  <div class= "" data-interview-buttons-target= "disable" data-interview-buttons-current-index-value="<%=session[:current_index]%>" data-interview-buttons-array-size-value="<%=question_array.size - 1%>">
+    <%= button_to "Stop", feedback_interview_path(@interview), method: :get, class: "btn btn-primary"%>
+    <%= button_to "Skip", feedback_interview_path(@interview), method: :get, class: "btn btn-primary"%>
+  </div>
+
+  <%# The Submit button to be displayed in case the current index is = to the question.array.size -1 (logic see interview_button_controller):%>
+  <div class = "d-none" data-interview-buttons-target= "enable" data-interview-buttons-current-index-value="<%=session[:current_index]%>" data-interview-buttons-array-size-value="<%=question_array.size - 1%>">
+    <p><%="Thank you for your commitment!"%></p>
+    <%= button_to "Submit", feedback_interview_path(@interview), method: :get, class: "btn btn-primary"%>
+  </div>
+</div>
+

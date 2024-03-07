@@ -19,7 +19,7 @@ class InterviewsController < ApplicationController
     @user_id = current_user.id
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
-    @questions = Question.all.sample(10).uniq
+    @questions = Question.all.sample(3).uniq
     if @interview.save
       @interview.number_of_questions.times do
         @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
