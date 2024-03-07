@@ -10,7 +10,7 @@
       <%= a.input :content %>
       <%= a.button :submit, class: "btn btn-primary" %>
     <% end %>
-    <% elsif session[:current_index] == question_array.size%>
+<% elsif session[:current_index] == question_array.size%>
   <%= "Thank you for your commitment!" %>
   <%= link_to "Submit", feedback_interview_path(@interview)%>
 <% end %>
