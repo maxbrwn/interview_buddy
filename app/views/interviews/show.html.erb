@@ -1,10 +1,7 @@
 <% question_array = @interview_questions.map do |interview_question| %>
 <% interview_question.question.content %>
 <% end %>
-
-
 <%# <%if session[:current_index] < question_array.size%>
-
 <%= question_array[session[:current_index]] %>
 
   <%= simple_form_for [@interview_questions[session[:current_index]], @answer] do |a| %>
@@ -17,7 +14,6 @@
 </div>
 <%# <% elsif session[:current_index] == question_array.size%>
 <%# <% end %>
-
 
 <div data-controller= "interview-buttons" class = "d-none" data-interview-buttons-target= "enable" data-interview-buttons-current-index-value="<%=session[:current_index]%>" data-interview-buttons-array-size-value="<%=question_array.size - 1%>">
   <p><%="Thank you for your commitment!"%></p>
