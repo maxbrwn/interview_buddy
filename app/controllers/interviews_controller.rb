@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
-  before_action :set_interview, only: [:show, :next_question, :feedback]
   skip_before_action :authenticate_user!
+  before_action :set_interview, only: [:show, :next_question, :feedback]
 
   def index
   end
@@ -21,7 +21,6 @@ class InterviewsController < ApplicationController
     @interview.user_id = @user_id
     @questions = Question.all.sample(10).uniq
     if @interview.save
-      reset_session
       @interview.number_of_questions.times do
         @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
         @interview_question.save
