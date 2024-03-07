@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
-  before_action :set_interview, only: [:show, :next_question, :feedback]
   skip_before_action :authenticate_user!
+  before_action :set_interview, only: [:show, :next_question, :feedback]
 
   def index
   end
