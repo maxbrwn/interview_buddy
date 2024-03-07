@@ -10,6 +10,7 @@
   <%= a.input :content %>
   <%= a.button :submit, class: "btn btn-primary" %>
 <% end %>
+
 <div data-controller= "interview-buttons">
   <div class= "" data-interview-buttons-target= "disable" data-interview-buttons-current-index-value="<%=session[:current_index]%>" data-interview-buttons-array-size-value="<%=question_array.size - 1%>">
     <%= button_to "Stop", feedback_interview_path(@interview), method: :get, class: "btn btn-primary"%>
@@ -22,3 +23,4 @@
     <%= button_to "Submit", feedback_interview_path(@interview), method: :get, class: "btn btn-primary"%>
   </div>
 </div>
+
