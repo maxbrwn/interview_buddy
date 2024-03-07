@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     end
   end
   resources :interview_questions do
+    member do
+      get "skip_question", to: "answers#skip_question", as: :skip_question
+    end
     resources :answers, only: [:create, :show]
   end
 end

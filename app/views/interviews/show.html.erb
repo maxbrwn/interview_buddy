@@ -13,7 +13,7 @@
     <%= a.button :submit, class: "btn btn-primary" %>
   <% end %>
   <%= button_to "Stop", feedback_interview_path(@interview), method: :get, class: "btn btn-primary"%>
-  <%= button_to "Skip", feedback_interview_path(@interview), method: :get, class: "btn btn-primary" %>
+  <%= link_to "Skip",   skip_question_interview_question_path(@interview_questions[session[:current_index]]),  class: "btn btn-primary"%>
 </div>
 <%# <% elsif session[:current_index] == question_array.size%>
 <%# <% end %>
