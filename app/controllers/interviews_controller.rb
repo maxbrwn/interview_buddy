@@ -26,7 +26,7 @@ class InterviewsController < ApplicationController
         @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
         @interview_question.save
       end
-      redirect_to interview__path(@interview)
+      redirect_to interview_path(@interview)
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,9 +38,9 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    feedback_string = ""
+    feedback_array = []
     # @interview = Interview.find(params[:interview_id])
-    @answers = @interview.interview_questions[session[:current_index] - 1].answers
+    @answers = @interview.interview_questions[session[:current_index ] - 1].answers
 
     @answers.each do |answer|
       feedback_string << answer.answer_feedback
