@@ -7,7 +7,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.interview_question = InterviewQuestion.find(params[:interview_question_id])
     if @answer.save
-      @answer.feedback
+      # @answer.feedback
       session[:current_index] += 1
       redirect_to interview_path(@answer.interview_question.interview)
     else
