@@ -1,8 +1,9 @@
 
+<div class="question-display">
 <% question_array = @interview_questions.map do |interview_question| %>
-<% interview_question.question.content %>
+<p><% interview_question.question.content %></p>
 <% end %>
-
+</div>
 
 <%if session[:current_index] < question_array.size%>
   <%= question_array[session[:current_index]] %>
@@ -14,4 +15,3 @@
   <%= "Thank you for your commitment!" %>
   <%= link_to "Submit", feedback_interview_path(@interview)%>
 <% end %>
-<%raise%>

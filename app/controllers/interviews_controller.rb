@@ -21,7 +21,6 @@ class InterviewsController < ApplicationController
     @interview.user_id = @user_id
     @questions = Question.all.sample(10).uniq
     if @interview.save
-      reset_session
       @interview.number_of_questions.times do
         @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
         @interview_question.save
@@ -38,14 +37,15 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    feedback_array = []
+    @feedback_array = []
     # @interview = Interview.find(params[:interview_id])
-    @answers = @interview.interview_questions[session[:current_index ] - 1].answers
-
+    @answers = @interview.interview_questions
+    question_number = 1
     @answers.each do |answer|
-      feedback_string << answer.answer_feedback
+      @feedback_array << "\n #{question_number}. #{answer.question.content} \n #{answer.answers}"
+      question_number += 1
     end
-    @interview.update(feedback: feedback_string)
+    @interview.update(feedback: @feedback_array)
   end
 
   private
