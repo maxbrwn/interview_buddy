@@ -1,4 +1,9 @@
 <div class="feedback-header">
+  <div class ="bookmark"><% @bookmarks.each do |b| %>
+    <%= b.question.content %> <hr>
+    <%= b.comment %>
+  </div>
+<% end %>
 <h1>My Interview Feedbacks</h1>
 </div>
 

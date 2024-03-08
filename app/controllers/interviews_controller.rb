@@ -41,8 +41,10 @@ class InterviewsController < ApplicationController
     @question_array = []
     @answer_feedback_array = []
     @interview.overall_feedback
+
     # @json = JSON.parse(@interview.feedback)
-    @questions = @interview.questions.pluck(:content)
+    #@questions = @interview.questions.pluck(:content)
+    @questions = @interview.questions
     @answers = @interview.answers.pluck(:content)
     @answers_feedback = @interview.answers.pluck(:answer_feedback)
     @answers.each do |answer|
@@ -59,6 +61,7 @@ class InterviewsController < ApplicationController
   def my_profile
     # get access to all the interviews of the current user
     @user_interviews = current_user.interviews
+    @bookmarks = Bookmark.where(user: current_user)
     # get access to the overall feedback of each interview
   end
 
