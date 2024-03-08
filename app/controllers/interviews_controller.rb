@@ -39,6 +39,7 @@ class InterviewsController < ApplicationController
   def feedback
     session[:current_index] = 0
     # @json = JSON.parse(@interview.feedback)
+    @interview.overall_feedback
     @questions = @interview.questions.pluck(:content)
     @answers = @interview.answers.pluck(:content)
   end
