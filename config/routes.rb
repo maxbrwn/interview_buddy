@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   end
   get "/profile", to: "interviews#my_profile", as: :my_profile
   get "/interviews/:id/feedback", to: "interviews#feedback", as: :feedback
+  resources :questions, except: [:index, :create, :show, :new, :destroy] do
+    resources :bookmarks, only: [:create]
+  end
+  resources :bookmarks, only: [:destroy]
 end
