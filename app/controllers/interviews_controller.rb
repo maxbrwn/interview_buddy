@@ -37,10 +37,23 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
+    @answer_array = []
+    @question_array = []
+    @answer_feedback_array = []
     @interview.overall_feedback
-    @json = JSON.parse(@interview.feedback)
+    # @json = JSON.parse(@interview.feedback)
     @questions = @interview.questions.pluck(:content)
     @answers = @interview.answers.pluck(:content)
+    @answers_feedback = @interview.answers.pluck(:answer_feedback)
+    @answers.each do |answer|
+      @answer_array << answer
+    end
+    @questions.each do |question|
+      @question_array << question
+    end
+    @answers_feedback.each do |answer|
+      @answer_feedback_array << answer
+    end
   end
 
   private
