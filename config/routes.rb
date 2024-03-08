@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     end
     resources :answers, only: [:create, :show]
   end
+  get "/profile", to: "interviews#my_profile", as: :my_profile
+  get "/interviews/:id/feedback", to: "interviews#feedback", as: :feedback
 end

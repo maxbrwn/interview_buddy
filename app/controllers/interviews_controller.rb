@@ -56,6 +56,12 @@ class InterviewsController < ApplicationController
     end
   end
 
+  def my_profile
+    # get access to all the interviews of the current user
+    @user_interviews = current_user.interviews
+    # get access to the overall feedback of each interview
+  end
+
   private
 
   def set_interview
