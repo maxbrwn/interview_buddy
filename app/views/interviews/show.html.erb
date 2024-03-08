@@ -18,9 +18,11 @@
   <div data-controller= "disable-buttons" class= "" data-disable-buttons-target= "disable" data-disable-buttons-current-index-value="<%=session[:current_index]%>" data-disable-buttons-array-size-value="<%=question_array.size - 1%>">
     <%= a.button :submit, class: "btn btn-primary" %>
   <% end %>
+
     <%= button_to "Stop", feedback_interview_path(@interview), method: :get, class: "btn btn-primary my-1 fs-5"%>
     <%= button_to "Skip", feedback_interview_path(@interview), method: :get, class: "btn btn-primary my-1 fs-5" %>
   </div>
+
 </div>
 <%# <% elsif session[:current_index] == question_array.size%>
 <%# <% end %>
