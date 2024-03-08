@@ -4,6 +4,7 @@ class Interview < ApplicationRecord
   has_many :questions, through: :interview_questions
   has_many :answers, through: :interview_questions
 
+  CATEGORIES = ["Frontend", "Backend", "Fullstack"]
 
   def overall_feedback
     @all_questions = questions.pluck(:content)

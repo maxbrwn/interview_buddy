@@ -12,7 +12,8 @@ class Answer < ApplicationRecord
       Return it in a feedback format and address the user directly.
       Structure the feedback in a way that is constructive and actionable.
       Do not include any of your own answers like 'Here is a feedback.
-      Give me rating from 1-10 for the answer at the very end."}]
+      Give me rating from 1-10 for the answer at the very end.
+      'I dont know' is not an answer: rating 0/10 "}]
     })
     # Save Chat GPT answer into answer_feedback variable
     answer_feedback = chaptgpt_answer_feedback["choices"][0]["message"]["content"]
