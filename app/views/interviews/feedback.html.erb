@@ -1,12 +1,21 @@
 
 <%# <% @json["feedback"].each do |feedback| %>
-<%# <% feedback.each do |k,v| %> %>
-  <%# <p><%= k["response"] %> %>
+<%# <% feedback.each do |k,v| %>
+  <%# <p><%= k["response"] %>
   <%# <%= k["hints"] %>
-  <%# <% end %> %>
-<%# <% end %> %> %>
-<%= @interview.overall_feedback %>
-<%# <%= @questions %> %>
-<%# <%= @answers %> %>
-
-
+  <%# <% end %>
+<%# <% end %>
+<div class= "feedback-container" >
+  <div >
+    <% @answers.each do |answer_feedback| %>
+      <div class= "answer-feedback-box">
+        <%= answer_feedback %>
+      </div>
+    <% end %>
+  </div>
+  <div class="overall-feedback-box">
+    <%= @interview.feedback %>
+  </div>
+</div>
+<%# <%= @questions %>
+<%# <%= @answers %>
