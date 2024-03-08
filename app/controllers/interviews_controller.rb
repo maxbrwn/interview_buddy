@@ -19,7 +19,7 @@ class InterviewsController < ApplicationController
     @user_id = current_user.id
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
-    @questions = Question.all.sample(3).uniq
+    @questions = Question.all.sample(10).uniq
     if @interview.save
       @interview.number_of_questions.times do
         @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
@@ -37,11 +37,30 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    session[:current_index] = 0
-    # @json = JSON.parse(@interview.feedback)
+    session[:current_index]
+    @answer_array = []
+    @question_array = []
+    @answer_feedback_array = []
     @interview.overall_feedback
+    # @json = JSON.parse(@interview.feedback)
     @questions = @interview.questions.pluck(:content)
     @answers = @interview.answers.pluck(:content)
+    @answers_feedback = @interview.answers.pluck(:answer_feedback)
+    @answers.each do |answer|
+      @answer_array << answer
+    end
+    @questions.each do |question|
+      @question_array << question
+    end
+    @answers_feedback.each do |answer|
+      @answer_feedback_array << answer
+    end
+  end
+
+  def my_profile
+    # get access to all the interviews of the current user
+    @user_interviews = current_user.interviews
+    # get access to the overall feedback of each interview
   end
 
   private
