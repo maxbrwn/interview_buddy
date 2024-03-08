@@ -23,7 +23,7 @@ class Interview < ApplicationRecord
     client = OpenAI::Client.new
     chaptgpt_general_feedback = client.chat(parameters: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "give me a summary about this interview. can you give me a rating from 1-10 for each answer and over all. be honest and realistic for the summary and the rating. give some hints on how to improve. #{@interview_string}. One answer after another. Return it in a feedback format and address the user directly. Give me back a JSON format with the following structure: {\"feedback\": \"Your feedback per answer\"}"}]
+      messages: [{ role: "user", content: "give me a summary about this interview. can you give me a rating from 1-10 for the over all perfomance not for every answer. be honest and realistic for the summary and the rating. give some hints on how to improve on the topics included in the questions. #{@interview_string}. Return it in a feedback format and address the user directly. Structure the feedback in a way that is constructive and actionable. Do not include any of your own answers like 'Here is a feedback."}]
     })
     final_feedback = chaptgpt_general_feedback["choices"][0]["message"]["content"]
     update(feedback: final_feedback)

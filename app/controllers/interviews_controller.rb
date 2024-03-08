@@ -41,7 +41,7 @@ class InterviewsController < ApplicationController
     # @json = JSON.parse(@interview.feedback)
     @interview.overall_feedback
     @questions = @interview.questions.pluck(:content)
-    @answers = @interview.answers.pluck(:content)
+    @answers = @interview.answers.pluck(:answer_feedback)
   end
 
   private
