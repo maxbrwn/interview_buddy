@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    resources :bookmarks, only: [:index, :create, :destroy]
+  end
   root to: "pages#home"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
