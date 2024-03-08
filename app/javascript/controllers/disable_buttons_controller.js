@@ -11,8 +11,8 @@ export default class extends Controller {
     const currentIndex = this.currentIndexValue;
     const arraySize = this.arraySizeValue;
 
-    if (currentIndex === arraySize) {
-    this.disableTarget.classList.add("d-none");
-    }
+    // if (currentIndex === arraySize) {
+    // this.disableTarget.classList.add("d-none");
+    // }
   }
 }
