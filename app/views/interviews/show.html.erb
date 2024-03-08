@@ -2,7 +2,6 @@
     <% question_array = @interview_questions.map do |interview_question| %>
       <% interview_question.question.content %>
     <% end %>
-
 <h3 class="mb-3 text-end"> Questions <%=session[:current_index] + 1%> / <%=question_array.size%></h3>
   <div class="question-display mt-2">
     <h4>
@@ -24,5 +23,6 @@
   <div data-controller= "interview-buttons" class = "d-none ms-2" data-interview-buttons-target= "enable" data-interview-buttons-current-index-value="<%=session[:current_index]%>" data-interview-buttons-array-size-value="<%=question_array.size - 1%>">
     <%= link_to "Submit", feedback_interview_path(@interview), class: "btn btn-primary"%>
   </div>
+</div>
 </div>
 </div>
