@@ -2,19 +2,16 @@
     <% question_array = @interview_questions.map do |interview_question| %>
       <% interview_question.question.content %>
     <% end %>
-
 <h3 class="mb-3 text-end"> Questions <%=session[:current_index] + 1%> / <%=question_array.size%></h3>
   <div class="question-display mt-2">
     <h4>
-<%= question_array[session[:current_index]] %>
+      <%= question_array[session[:current_index]] %>
     </h4>
   </div>
-
-<%# <%if session[:current_index] < question_array.size%>
-
 <div class="input-card mt-4">
   <%= simple_form_for [@interview_questions[session[:current_index]], @answer] do |a| %>
     <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted opacity-50', placeholder: 'Put your answer right here. Please keep it as short and understandible as possible.' } %>
+<<<<<<< HEAD
     <%= a.button :submit, class: "btn btn-primary" %>
   <% end %>
     <%= link_to "Skip", skip_question_interview_question_path(@interview_questions[session[:current_index]]),  class: "btn btn-primary"%>
@@ -27,4 +24,18 @@
 
   <%= link_to "Submit", feedback_interview_path(@interview), class: "btn btn-primary"%>
 
+=======
+    <div class="d-flex">
+    <%= a.button :submit, class: "btn btn-primary" %>
+  <% end %>
+    <%= link_to "Skip", skip_question_interview_question_path(@interview_questions[session[:current_index]]),  class: "btn btn-primary mx-2 "%>
+  <div data-controller= "disable-buttons" class= "" data-disable-buttons-target= "disable" data-disable-buttons-current-index-value="<%=session[:current_index]%>" data-disable-buttons-array-size-value="<%=question_array.size - 1%>">
+    <%= link_to "Stop", feedback_interview_path(@interview), class: "btn btn-primary"%>
+    </div>
+  <div data-controller= "interview-buttons" class = "d-none ms-2" data-interview-buttons-target= "enable" data-interview-buttons-current-index-value="<%=session[:current_index]%>" data-interview-buttons-array-size-value="<%=question_array.size - 1%>">
+    <%= link_to "Submit", feedback_interview_path(@interview), class: "btn btn-primary"%>
+  </div>
+</div>
+</div>
+>>>>>>> aff552faf65c07bdd38cf85ad90428f642d71d6c
 </div>
