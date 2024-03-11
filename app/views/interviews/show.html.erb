@@ -9,6 +9,7 @@
     </h4>
   </div>
 <div class="input-card mt-4">
+  <%= raise %>
   <%= simple_form_for [@interview_questions[session[:current_index]], @answer] do |a| %>
     <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted opacity-50', placeholder: 'Put your answer right here. Please keep it as short and understandible as possible.' } %>
     <div class="d-flex">
