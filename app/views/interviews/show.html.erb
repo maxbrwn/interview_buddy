@@ -1,12 +1,7 @@
-<%# Display of questions %>
 <div class="containter mx-5 mt-3">
     <% question_array = @interview_questions.map do |interview_question| %>
       <% interview_question.question.content %>
     <% end %>
-
-<%# Display of current question no. / total no. of questions in that session %>
-<%# session[:current_index] = @interview.answers.count + 1
-question_array.size = @interview.number_of_questions %>
 
   <h3 class="mb-3 text-end"> Questions <%= @interview.answers.count + 1%> / <%= @interview.number_of_questions%></h3>
   <div class="question-display mt-2">
@@ -15,8 +10,6 @@ question_array.size = @interview.number_of_questions %>
     </h4>
   </div>
 
-<%# <%if session[:current_index] < question_array.size%>
-<%# Create answer button when on the last question will lead you to the feedback page  %>
   <div class="input-card mt-4">
     <% if @interview.answers.count < @interview.number_of_questions %>
       <%= simple_form_for [@interview_questions[@interview.answers.count], @answer] do |a| %>
@@ -25,17 +18,9 @@ question_array.size = @interview.number_of_questions %>
       <%end%>
       <%= link_to "Skip Question", skip_question_interview_question_path(@interview_questions[@interview.answers.count]), class: "btn btn-primary" %>
     <% end %>
-<%# Skip question button when on the last question will lead you to the feedback page %>
 
-  <%# Quit session button will always lead you to the feedback page %>
     <div data-controller= "disable-buttons" class= "" data-disable-buttons-target= "disable" data-disable-buttons-current-index-value="<%=@interview.answers.count%>" data-disable-buttons-array-size-value="<%=@interview.number_of_questions - 1%>">
       <%= link_to "Quit session", feedback_interview_path(@interview), class: "btn btn-primary"%>
     </div>
-
-<%# <% elsif session[:current_index] == question_array.size%>
-<%# <% end %>
-  <%# <% if session[:current_index] == question_array.size - 1 %>
-  <%# <%= link_to "Submit", feedback_interview_path(@interview), class: "btn btn-primary"%>
-  <%# <%end%>
   </div>
 </div>
