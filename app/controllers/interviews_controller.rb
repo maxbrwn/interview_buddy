@@ -37,15 +37,11 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    session[:current_index]
     @answer_array = []
     @question_array = []
     @answer_feedback_array = []
     @interview.overall_feedback
-
-    # @json = JSON.parse(@interview.feedback)
-    #@questions = @interview.questions.pluck(:content)
-    @questions = @interview.questions
+    @questions = @interview.questions.pluck(:content)
     @answers = @interview.answers.pluck(:content)
     @answers_feedback = @interview.answers.pluck(:answer_feedback)
     @answers.each do |answer|
