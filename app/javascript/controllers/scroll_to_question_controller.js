@@ -12,7 +12,6 @@ static values = { id: String }
 
     if (this.idValue) {
       this.scrollToQuestion();
-
     }
   }
   scrollToQuestion() {
