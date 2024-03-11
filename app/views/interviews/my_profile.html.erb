@@ -1,19 +1,21 @@
 <div class="feedback-header">
-  <div class ="bookmark"><% @bookmarks.each do |b| %>
-    <%= b.question.content %> <hr>
-    <%= b.comment %>
+  <div class ="bookmark">
+    <% @bookmarks.each do |b| %>
+      <%= b.question.content %>
+      <hr>
+    <% end %>
   </div>
-<% end %>
-<h1>My Interview Feedbacks</h1>
-</div>
 
-<div class="feedback">
-<% @user_interviews.each do |interview| %>
-  <div class="feedback-box">
-    <h2><%= link_to interview.role, feedback_interview_path(interview) %></h2>
-    <h3><%= interview.language %></h3>
-    <p>Date: <%= interview.created_at.strftime("%B %d, %Y %H:%M") %></p>
-  <%# Render feedback content here %>
+  <h1>My Interview Feedbacks</h1>
+
+  <div class="feedback">
+  <% @user_interviews.each do |interview| %>
+    <div class="feedback-box">
+      <h2><%= link_to interview.role, feedback_interview_path(interview) %></h2>
+      <h3><%= interview.language %></h3>
+      <p>Date: <%= interview.created_at.strftime("%B %d, %Y %H:%M") %></p>
+    <%# Render feedback content here %>
+    </div>
+  <% end %>
   </div>
-<% end %>
 </div>
