@@ -8,7 +8,7 @@
       <div class="p-1">
         <div class = "d-flex justify-content-between" data-controller= "scroll-to-question" <%= answer.interview_question.question.id == params[:question_id].to_i ? "data-scroll-to-question-id-value=#{params[:question_id]}" : ""%>>
           <h5 class="m-2 font-weight-bold fs-4" data-scroll-to-question-target = "question"   >Question</h5>
-          <%= answer.interview_question.question.id %>
+          <%= answer.interview_question.id %>
             <% bookmark = current_user.bookmarks.find_by(question_id: answer.interview_question.question.id)  %>
             <% if bookmark %>
               <%= link_to bookmark_destroy_path(bookmark, interview_id: @interview.id ), data: {turbo_method: :delete} do %>
