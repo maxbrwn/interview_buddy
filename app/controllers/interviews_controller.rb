@@ -21,7 +21,7 @@ class InterviewsController < ApplicationController
     @user_id = current_user.id
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
-    @questions = Question.all.sample(3).uniq
+    @questions = Question.all.sample(10).uniq
     if @interview.save
       @questions.each do |question|
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
@@ -43,7 +43,6 @@ class InterviewsController < ApplicationController
     @question_array = []
     @answer_feedback_array = []
     @interview.overall_feedback
-    # @json = JSON.parse(@interview.feedback)
     @questions = @interview.questions.pluck(:content)
     @answers = @interview.answers.pluck(:content)
     @answers_feedback = @interview.answers.pluck(:answer_feedback)
@@ -61,6 +60,7 @@ class InterviewsController < ApplicationController
   def my_profile
     # get access to all the interviews of the current user
     @user_interviews = current_user.interviews
+    @bookmarks = Bookmark.where(user: current_user)
     # get access to the overall feedback of each interview
   end
 
