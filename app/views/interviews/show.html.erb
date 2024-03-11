@@ -13,7 +13,7 @@
     <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted opacity-50', placeholder: 'Put your answer right here. Please keep it as short and understandible as possible.', data: { voice_input_target: 'input' } } %>
     <div class="d-flex">
     <span data-action="click->voice-input#record" style="cursor: pointer; text-decoration: underline" data-target="voice-input.startButton">
-      Start Recording
+      <i class="fa-solid fa-microphone fs-3"></i>
     </span>
     <%= a.button :submit, class: "btn btn-primary" %>
   <% end %>
