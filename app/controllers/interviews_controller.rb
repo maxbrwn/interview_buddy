@@ -8,7 +8,9 @@ class InterviewsController < ApplicationController
   def show
     @answer = Answer.new
     @interview_questions = @interview.interview_questions
-    session[:current_index] ||= 0
+    if @interview.questions.count == @interview.answers.count
+      redirect_to feedback_interview_path(@interview)
+    end
   end
 
   def new
@@ -21,10 +23,11 @@ class InterviewsController < ApplicationController
     @interview.user_id = @user_id
     @questions = Question.all.sample(3).uniq
     if @interview.save
-      @interview.number_of_questions.times do
-        @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
+      @questions.each do |question|
+        @interview_question = InterviewQuestion.new(interview: @interview, question: question)
         @interview_question.save
       end
+
       redirect_to interview_path(@interview)
     else
       render :new, status: :unprocessable_entity
@@ -32,7 +35,6 @@ class InterviewsController < ApplicationController
   end
 
   def next_question
-    session[:current_index] += 1 if session[:current_index].present?
     redirect_to interview_path(@interview)
   end
 
@@ -71,5 +73,4 @@ class InterviewsController < ApplicationController
   def params_interview
     params.require(:interview).permit(:role, :language, :number_of_questions)
   end
-
 end

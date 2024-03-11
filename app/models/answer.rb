@@ -1,5 +1,6 @@
 class Answer < ApplicationRecord
   belongs_to :interview_question
+  validates_uniqueness_of :interview_question_id
 
   def feedback
     client = OpenAI::Client.new
