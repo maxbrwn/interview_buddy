@@ -10,7 +10,7 @@
   </div>
 <div class="input-card mt-4">
   <%= simple_form_for [@interview_questions[session[:current_index]], @answer], data: { controller: "voice-input" } do |a| %>
-    <%= a.input :content, label: false, data: { voice_input_target: 'input' }, input_html: { class: 'answer-input fs-4 text-muted opacity-50', placeholder: 'Put your answer right here. Please keep it as short and understandible as possible.' } %>
+    <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted opacity-50', placeholder: 'Put your answer right here. Please keep it as short and understandible as possible.', data: { voice_input_target: 'input' } } %>
     <div class="d-flex">
     <span data-action="click->voice-input#record" style="cursor: pointer; text-decoration: underline" data-target="voice-input.startButton">
       Start Recording
