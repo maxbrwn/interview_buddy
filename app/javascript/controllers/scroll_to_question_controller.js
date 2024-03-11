@@ -11,11 +11,12 @@ static values = { id: String }
     console.log(this.idValue);
 
     if (this.idValue) {
-      console.log("scrolling to question");
       this.scrollToQuestion();
+
     }
   }
   scrollToQuestion() {
+    console.log("scrolling to question");
     this.questionTarget.scrollIntoView({ behavior: "smooth" });
   }
 }
