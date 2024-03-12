@@ -23,5 +23,5 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [:create]
   end
   resources :bookmarks, only: [:destroy], as: :bookmark_destroy
+  post '/generate_speech', to: 'audio#generate_speech'
 end
-
