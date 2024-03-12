@@ -9,7 +9,6 @@
       <%= question_array[@interview.answers.count] %>
     </h4>
   </div>
-
   <div class="input-card mt-4">
     <% if @interview.answers.count < @interview.number_of_questions %>
       <%= simple_form_for [@interview_questions[@interview.answers.count], @answer], data: { controller: "voice-input" } do |a| %>
