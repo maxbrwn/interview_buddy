@@ -14,7 +14,7 @@
   </div>
   </div>
 
-  <div class="input-card mt-3">
+  <div class="input-card mt-4">
     <% if @interview.answers.count < @interview.number_of_questions %>
       <%= simple_form_for [@interview_questions[@interview.answers.count], @answer], data: { controller: "voice-input" } do |a| %>
         <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted', placeholder: '# Enter your answer right here. Try to keep it as short as possible.', data: { voice_input_target: 'input' } } %>
