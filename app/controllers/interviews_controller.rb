@@ -23,6 +23,7 @@ class InterviewsController < ApplicationController
     @interview.user_id = @user_id
     number_of_questions = @interview.number_of_questions
     @questions = Question.all.sample(number_of_questions).uniq
+
     if @interview.save
       @questions.each do |question|
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
@@ -39,7 +40,7 @@ class InterviewsController < ApplicationController
     redirect_to interview_path(@interview)
   end
 
-  def feedback    
+  def feedback
     @answers = @interview.answers
     @questions = @interview.questions
     @answers_feedback = @answers.pluck(:answer_feedback)

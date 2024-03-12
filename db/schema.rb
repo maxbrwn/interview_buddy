@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_145545) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_12_144225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_145545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "speech_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "text"
+    t.datetime "generated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_speech_logs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +91,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_145545) do
   add_foreign_key "interview_questions", "interviews"
   add_foreign_key "interview_questions", "questions"
   add_foreign_key "interviews", "users"
+  add_foreign_key "speech_logs", "users"
 end

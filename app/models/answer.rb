@@ -2,6 +2,7 @@ class Answer < ApplicationRecord
   belongs_to :interview_question
   validates_uniqueness_of :interview_question_id
 
+
   def feedback
     client = OpenAI::Client.new
     # pass parameters and prompts to Chat GPT
@@ -21,7 +22,4 @@ class Answer < ApplicationRecord
     # Update the question_answer array to be pushed in bulk to chat GPT for the final feedback
     update(answer_feedback: answer_feedback)
   end
-
-
-
 end

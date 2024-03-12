@@ -1,30 +1,35 @@
-<div class="containter mx-5 mt-3">
+<div class="containter mx-5 mt-5">
     <% question_array = @interview_questions.map do |interview_question| %>
       <% interview_question.question.content %>
     <% end %>
 
   <h3 class="mb-3 text-end"> Questions <%= @interview.answers.count + 1%> / <%= @interview.number_of_questions%></h3>
-  <div class="question-display mt-2">
-    <h4>
-      <%= question_array[@interview.answers.count] %>
-    </h4>
+  <div class="d-flex">
+    <%= image_tag("Avatar_1b.jpg", class: "interview-avatar me-2") %>
+  <div class="question-display mt-2 d-flex align-items-center w-100 justify-content-center", data-controller="text-to-speech" data-text="<%= question_array[@interview.answers.count] %>">
+      <h4>
+        <%= question_array[@interview.answers.count] %>
+      </h4>
+      <button data-action="click->text-to-speech#speak" class="btn btn-dark ms-2"><i class="fa-solid fa-play"></i></button>
   </div>
+  </div>
+
   <div class="input-card mt-4">
     <% if @interview.answers.count < @interview.number_of_questions %>
       <%= simple_form_for [@interview_questions[@interview.answers.count], @answer], data: { controller: "voice-input" } do |a| %>
-        <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted opacity-50', placeholder: 'Put your answer right here. Please keep it as short and understandable as possible.', data: { voice_input_target: 'input' } } %>
-        <div class="d-flex">
-          <span data-action="click->voice-input#record" style="cursor: pointer; text-decoration: underline" data-target="voice-input.startButton">
-            Start Recording
+        <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted', placeholder: '# Enter your answer right here. Try to keep it as short as possible.', data: { voice_input_target: 'input' } } %>
+        <div class="d-flex mt-2 justify-content-between">
+          <span class="ms-2 fs-2" data-action="click->voice-input#record" style="cursor: pointer; text-decoration: underline" data-target="voice-input.startButton">
+            <i class="fa-solid fa-microphone"></i>
           </span>
-          <%= a.button :submit, class: "btn btn-primary" %>
+          <div class="d-flex align-items-center">
+          <%= a.button :submit, class: "btn btn-dark" %>
       <%end%>
-      <%= link_to "Skip Question", skip_question_interview_question_path(@interview_questions[@interview.answers.count]), class: "btn btn-primary mx-2" %>
+      <%= link_to "Skip Question", skip_question_interview_question_path(@interview_questions[@interview.answers.count]), class: "btn btn-dark mx-3" %>
+          <%= link_to "Quit session", feedback_interview_path(@interview), class: "btn btn-dark", data: { controller: "disable-buttons", disable_buttons_target: "disable", disable_buttons_current_index_value: @interview.answers.count, disable_buttons_array_size_value: @interview.number_of_questions - 1 } %>
     <% end %>
 
-    <div data-controller= "disable-buttons" class= "" data-disable-buttons-target= "disable" data-disable-buttons-current-index-value="<%=@interview.answers.count%>" data-disable-buttons-array-size-value="<%=@interview.number_of_questions - 1%>">
-      <%= link_to "Quit session", feedback_interview_path(@interview), class: "btn btn-primary"%>
-          </div>
+      </div>
     </div>
   </div>
 </div>
