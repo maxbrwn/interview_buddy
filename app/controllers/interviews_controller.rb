@@ -8,7 +8,9 @@ class InterviewsController < ApplicationController
   def show
     @answer = Answer.new
     @interview_questions = @interview.interview_questions
-    session[:current_index] ||= 0
+    if @interview.questions.count == @interview.answers.count
+      redirect_to feedback_interview_path(@interview)
+    end
   end
 
   def new
@@ -19,12 +21,14 @@ class InterviewsController < ApplicationController
     @user_id = current_user.id
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
-    @questions = Question.all.sample(10).uniq
+    number_of_questions = @interview.number_of_questions
+    @questions = Question.all.sample(number_of_questions).uniq
     if @interview.save
-      @interview.number_of_questions.times do
-        @interview_question = InterviewQuestion.new(interview_id: @interview.id, question_id: @questions.pop.id)
+      @questions.each do |question|
+        @interview_question = InterviewQuestion.new(interview: @interview, question: question)
         @interview_question.save
       end
+
       redirect_to interview_path(@interview)
     else
       render :new, status: :unprocessable_entity
@@ -32,27 +36,16 @@ class InterviewsController < ApplicationController
   end
 
   def next_question
-    session[:current_index] += 1 if session[:current_index].present?
     redirect_to interview_path(@interview)
   end
 
-  def feedback
-    @answer_array = []
-    @question_array = []
-    @answer_feedback_array = []
+  def feedback    
+    @answers = @interview.answers
+    @questions = @interview.questions
+    @answers_feedback = @answers.pluck(:answer_feedback)
     @interview.overall_feedback
-    @questions = @interview.questions.pluck(:content)
-    @answers = @interview.answers.pluck(:content)
-    @answers_feedback = @interview.answers.pluck(:answer_feedback)
-    @answers.each do |answer|
-      @answer_array << answer
-    end
-    @questions.each do |question|
-      @question_array << question
-    end
-    @answers_feedback.each do |answer|
-      @answer_feedback_array << answer
-    end
+    # @json = JSON.parse(@interview.feedback)
+    #@questions = @interview.questions.pluck(:content)
   end
 
   def my_profile
@@ -71,5 +64,4 @@ class InterviewsController < ApplicationController
   def params_interview
     params.require(:interview).permit(:role, :language, :number_of_questions)
   end
-
 end
