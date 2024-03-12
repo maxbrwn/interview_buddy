@@ -1,46 +1,40 @@
 
-
 <div class="feedback-card my-4 mx-5 ">
   <div>
     <h3 class="text-center p-2 mt-1">Your overall feedback</h3>
   </div>
+
   <% @answers.each.with_index do |answer, index|%>
     <div class = "feedback">
       <div class="p-1">
         <div class = "d-flex justify-content-between" data-controller= "scroll-to-question" <%= answer.interview_question.question.id == params[:question_id].to_i ? "data-scroll-to-question-id-value=#{params[:question_id]}" : ""%>>
           <h5 class="m-2 font-weight-bold fs-4" data-scroll-to-question-target = "question"   >Question</h5>
           <%= answer.interview_question.id %>
-            <% bookmark = current_user.bookmarks.find_by(question_id: answer.interview_question.question.id)  %>
-            <% if bookmark %>
-              <%= link_to bookmark_destroy_path(bookmark, interview_id: @interview.id ), data: {turbo_method: :delete} do %>
-                <i class="fa-solid fa-bookmark fs-3 m-2"></i>
-              <% end %>
-            <% else %>
-              <%= link_to question_bookmarks_path( answer.interview_question.question, interview_id: @interview.id), data: {turbo_method: :post} do %>
-                <i class="fa-regular fa-bookmark fs-3 m-2"></i>
-              <% end %>
-            <% end %>
+          <%= render partial: 'bookmarks/bookmark',
+          locals: { answer: answer, interview: @interview, question: answer.interview_question.question } %>
         </div>
         <p class="mt-3"><%= answer.interview_question.question.content %></p>
       </div>
-    <hr>
+      <hr>
+
       <div class="p-1">
         <h5 class="font-weight-bold fs-4">Answer</h5>
         <p class="mt-3"><%= answer.content%></p>
       </div>
-    <hr>
+
+      <hr>
       <div class="p-1">
         <h5 class="font-weight-bold fs-4">Feedback</h5>
         <p class="mt-3"><%= answer.answer_feedback%></p>
       </div>
     </div>
   <%end%>
-  <div id="current_bookmark">
-      <div class="feedback" >
-        <div class="p-1">
-            <h5 class="font-weight-bold fs-4">Summary</h5>
-            <p class="mt-3"><%= @interview.feedback%></p>
-        </div>
-      </div>
+
+
+  <div class="feedback" >
+    <div class="p-1">
+      <h5 class="font-weight-bold fs-4">Summary</h5>
+      <p class="mt-3"><%= @interview.feedback%></p>
+    </div>
   </div>
 </div>
