@@ -39,7 +39,7 @@ class InterviewsController < ApplicationController
     redirect_to interview_path(@interview)
   end
 
-  def feedback    
+  def feedback
     @answers = @interview.answers
     @questions = @interview.questions
     @answers_feedback = @answers.pluck(:answer_feedback)

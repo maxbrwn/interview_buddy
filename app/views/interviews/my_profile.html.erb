@@ -1,21 +1,48 @@
-<div class="feedback-header">
-  <div class ="bookmark">
-    <% @bookmarks.each do |b| %>
-      <%= b.question.content %>
-      <hr>
-    <% end %>
-  </div>
-
-  <h1>My Interview Feedbacks</h1>
-
-  <div class="feedback">
-  <% @user_interviews.each do |interview| %>
-    <div class="feedback-box">
-      <h2><%= link_to interview.role, feedback_interview_path(interview) %></h2>
-      <h3><%= interview.language %></h3>
-      <p>Date: <%= interview.created_at.strftime("%B %d, %Y %H:%M") %></p>
-    <%# Render feedback content here %>
+<div class="container">
+  <div class="row">
+  <div class="col-md-6">
+    <div class="feedback-header">
+      <h1>My Interview Feedbacks</h1>
+      <div class="feedback">
+        <% @user_interviews.each do |interview| %>
+        <%# <h4><%= text_field_tag "interview_role_#{interview.id}", '', class: "editable-role", placeholder: "Type here..."%></h4>
+          <a href="<%= feedback_interview_path(interview)%>">
+            <div class="feedback-box">
+              <h2><%= interview.role %></h2>
+              <h3><%= interview.language %></h3>
+              <h3>
+                  <% if interview.language == "HTML" %>
+                    <i class="fa-solid fa-code" style="color: #f16529;"></i> HTML
+                  <% elsif interview.language == "css" %>
+                    <i class="fa-brands fa-css3" style="color: #254bdd;"></i> CSS
+                  <% elsif interview.language == "javascript" %>
+                    <i class="fa-brands fa-js" style="color: #f0db4f;"></i> JavaScript
+                  <% else %>
+                    No specific symbol for <%= interview.language %>
+                  <% end %>
+              </h3>
+              <h3><i class="fa-solid fa-clipboard-question" style="color: blue;"></i> Number of questions: <%= interview.number_of_questions%></h3>
+              <p>&#128197; <%= interview.created_at.strftime("%B %d, %Y %H:%M") %></p>
+              <%# Render feedback content here %>
+            </div>
+          </a>
+        <% end %>
+      </div>
     </div>
-  <% end %>
   </div>
+
+  <div class="col-md-6">
+    <div class ="bookmark-header">
+      <h1>My Bookmark questions</h1>
+        <div class="bookmark">
+          <% @bookmarks.each do |b| %>
+            <div class="bookmark-box">
+              <%= b.question.content %>
+              <hr>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
 </div>
