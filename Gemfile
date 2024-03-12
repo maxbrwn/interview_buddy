@@ -53,11 +53,14 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem 'whisper', '~> 0.2.0'
 
 group :development, :test do
   gem "dotenv-rails"
+  gem "pry-byebug"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem "pry-byebug"
 end
 
 group :development do

@@ -8,15 +8,11 @@
       <%= f.input :role, as: :boolean, label: "Front end", input_html: { value: "Front end" } %>
     </div>
   </div>
-
-  <!-- Back end card -->
   <div class="role-card d-flex align-itmes-center justify-content-center">
       <div class="card">
         <%= f.input :role, as: :boolean, label: "Back end", input_html: { value: "Back end" } %>
       </div>
   </div>
-
-  <!-- Fullstack card -->
   <div class="role-card d-flex align-itmes-center justify-content-center">
     <div class="card">
       <%= f.input :role, as: :boolean, label: "Fullstack", input_html: { value: "Fullstack" } %>
@@ -24,7 +20,7 @@
   </div>
   </div>
   <div class="question-amount mt-4 text-center">
-  <%= f.input :number_of_questions, collection: [10, 20], prompt: "Select the number of questions", label: false %>
+    <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
   </div>
   <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
   <%= f.submit %>

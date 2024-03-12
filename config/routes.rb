@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   resources :questions, except: [:index, :create, :show, :new, :destroy] do
     resources :bookmarks, only: [:create]
   end
-  resources :bookmarks, only: [:destroy]
+  resources :bookmarks, only: [:destroy], as: :bookmark_destroy
 end
+
