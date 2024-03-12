@@ -18,11 +18,12 @@
           <label for="input_fullstack">Fullstack</label>
         </div>
       </div>
-
-      <div data-showhide-target="frontendoutput" data-value='Frontend'>
+      <div data-showhide-target="questionoutput" data-value='Question'>
         <div class="question-amount mt-4 text-center">
           <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
         </div>
+      </div>
+      <div data-showhide-target="frontendoutput" data-value='Frontend'>
         <%= f.input :language,
             as: :check_boxes,
             collection_wrapper_tag: 'div',
@@ -35,9 +36,6 @@
         <%= f.submit %>
       </div>
       <div data-showhide-target="backendoutput" data-value='Backend'>
-        <div class="question-amount mt-4 text-center">
-          <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
-        </div>
         <%= f.input :language,
             as: :check_boxes,
             collection_wrapper_tag: 'div',
@@ -49,14 +47,11 @@
         <%= f.submit %>
       </div>
       <div data-showhide-target="fullstackoutput" data-value='Fullstack'>
-        <div class="question-amount mt-4 text-center">
-          <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
-        </div>
         <%= f.input :language,
             as: :check_boxes,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'language-wrapper',
-            item_wrapper_class: 'language-item',
+            item_wrapper_class: 'language-item mt-1',
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::FULLSTACK %>
