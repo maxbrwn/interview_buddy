@@ -12,13 +12,11 @@ export default class extends Controller {
     const arraySize = this.arraySizeValue;
 
     if (currentIndex === arraySize) {
-    this.disableTarget.classList.add("d-none");
+      this.enableTarget.classList.remove("d-none");
     }
-  }
+    // if (currentIndex === arraySize) {
+    // this.disableTarget.classList.add("d-none");
+    // }
 
-  disable(){
-    this.buttonTarget.innerText = "Bingo!";
-  this.buttonTarget.setAttribute("disabled", "");
-  this.linkTarget.classList.remove("d-none");
   }
 }

@@ -1,29 +1,68 @@
+<div class="mx-4 mt-4 p-4">
+  <%= simple_form_for @interview do |f| %>
+    <div data-controller="showhide">
 
-<div class="mx-4 mt-4">
-<%= simple_form_for @interview do |f| %>
-<div class="select-container mx-5">
-<div class="role-container">
-  <div class="role-card d-flex align-itmes-center justify-content-center">
-    <div class="card">
-      <%= f.input :role, as: :boolean, label: "Front end", input_html: { value: "Front end" } %>
-    </div>
-  </div>
-  <div class="role-card d-flex align-itmes-center justify-content-center">
-      <div class="card">
-        <%= f.input :role, as: :boolean, label: "Back end", input_html: { value: "Back end" } %>
+      <div class="cards">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('frontend.jpg') %>'">
+          <%= f.input :role, as: :boolean, label: false, input_html: { data: { showhide_target: "input", action: "change->showhide#toggle", value: "Frontend" }, class: "checkbox", id: 'input_frontend'  } %>
+          <label for="input_frontend">Frontend</label>
+        </div>
+
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('backend.jpg') %>'">
+          <%= f.input :role, as: :boolean, label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Backend" }, class: "checkbox", id: 'input_backend' }%>
+          <label for="input_backend">Backend</label>
+        </div>
+
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('fullstack.jpg') %>'">
+          <%= f.input :role, as: :boolean, label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Fullstack" }, class: "checkbox", id: 'input_fullstack' } %>
+          <label for="input_fullstack">Fullstack</label>
+        </div>
       </div>
+
+      <div data-showhide-target="frontendoutput" data-value='Frontend'>
+        <div class="question-amount mt-4 text-center">
+          <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
+        </div>
+        <%= f.input :language,
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'language-wrapper',
+            item_wrapper_class: 'language-item',
+            input_html: {class: 'language-selector'},
+            prompt: "Select a language",
+            collection: Interview::FRONTEND %>
+        <%# <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
+        <%= f.submit %>
+      </div>
+      <div data-showhide-target="backendoutput" data-value='Backend'>
+        <div class="question-amount mt-4 text-center">
+          <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
+        </div>
+        <%= f.input :language,
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'language-wrapper',
+            item_wrapper_class: 'language-item',
+            input_html: {class: 'language-selector'},
+            prompt: "Select a language",
+            collection: Interview::BACKEND %>
+        <%= f.submit %>
+      </div>
+      <div data-showhide-target="fullstackoutput" data-value='Fullstack'>
+        <div class="question-amount mt-4 text-center">
+          <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
+        </div>
+        <%= f.input :language,
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'language-wrapper',
+            item_wrapper_class: 'language-item',
+            input_html: {class: 'language-selector'},
+            prompt: "Select a language",
+            collection: Interview::FULLSTACK %>
+        <%= f.submit %>
+      </div>
+    <% end %>
   </div>
-  <div class="role-card d-flex align-itmes-center justify-content-center">
-    <div class="card">
-      <%= f.input :role, as: :boolean, label: "Fullstack", input_html: { value: "Fullstack" } %>
-    </div>
-  </div>
-  </div>
-  <div class="question-amount mt-4 text-center">
-    <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
-  </div>
-  <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
-  <%= f.submit %>
-<% end %>
 </div>
 </div>

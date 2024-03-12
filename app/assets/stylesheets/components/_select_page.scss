@@ -5,16 +5,197 @@
   border-radius: 5px;
 }
 
-.role-container {
-  display: flex;
-  justify-content: space-between;
-}
-
 .card {
   margin-top: 75px;
   border: none;
 }
-
 .select-container {
   width: 90%;
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.checkbox {
+  visibility: hidden;
+}
+
+.checkbox + label {
+  cursor: pointer;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 28px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+.language-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.language-item {
+  flex: 0 0 30%;
+}
+
+.language-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.language-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.language-selector:checked + label {
+  color: white !important;
+}
+
+
+#interview_language_html + label {
+  color: #e5532f;
+}
+
+#interview_language_html:checked + label {
+  background-color: #e5532f;
+  border-color: #e5532f;
+}
+
+
+#interview_language_javascript + label {
+  color: #FFC65A;
+}
+
+#interview_language_javascript:checked + label {
+  background-color: #FFC65A;
+  border-color: #FFC65A;
+}
+
+
+#interview_language_css + label {
+  color: #62DDF5;
+}
+
+#interview_language_css:checked + label {
+  background-color: #62DDF5;
+  border-color: #62DDF5;
+}
+
+
+#interview_language_ruby + label {
+  color: #FD1015;
+}
+
+#interview_language_ruby:checked + label {
+  background-color: #FD1015;
+  border-color: #FD1015;
+}
+
+
+#interview_language_python + label {
+  color: #447dae;
+}
+
+#interview_language_python:checked + label {
+  background-color: #447dae;
+  border-color: #447dae;
+}
+
+
+#interview_language_php + label {
+  color: #7b7fb6;
+}
+
+#interview_language_php:checked + label {
+  background-color: #7b7fb6;
+  border-color: #7b7fb6;
+}
+
+
+#interview_language_angular + label {
+  color: #c51336;
+}
+
+#interview_language_angular:checked + label {
+  background-color: #c51336;
+  border-color: #c51336;
+}
+
+
+#interview_language_react + label {
+  color: #67dafb;
+}
+
+#interview_language_react:checked + label {
+  background-color: #67dafb;
+  border-color: #67dafb;
+}
+
+
+#interview_language_rails + label {
+  color: #ce140e;
+}
+
+#interview_language_rails:checked + label {
+  background-color: #ce140e;
+  border-color: #ce140e;
 }
