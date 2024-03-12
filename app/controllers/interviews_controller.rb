@@ -21,7 +21,9 @@ class InterviewsController < ApplicationController
     @user_id = current_user.id
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
-    @questions = Question.all.sample(3).uniq
+    number_of_questions = @interview.number_of_questions
+    @questions = Question.all.sample(number_of_questions).uniq
+
     if @interview.save
       @questions.each do |question|
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
@@ -39,22 +41,12 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    @answer_array = []
-    @question_array = []
-    @answer_feedback_array = []
+    @answers = @interview.answers
+    @questions = @interview.questions
+    @answers_feedback = @answers.pluck(:answer_feedback)
     @interview.overall_feedback
-    @questions = @interview.questions.pluck(:content)
-    @answers = @interview.answers.pluck(:content)
-    @answers_feedback = @interview.answers.pluck(:answer_feedback)
-    @answers.each do |answer|
-      @answer_array << answer
-    end
-    @questions.each do |question|
-      @question_array << question
-    end
-    @answers_feedback.each do |answer|
-      @answer_feedback_array << answer
-    end
+    # @json = JSON.parse(@interview.feedback)
+    #@questions = @interview.questions.pluck(:content)
   end
 
   def my_profile

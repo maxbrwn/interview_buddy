@@ -2,7 +2,11 @@
 <div class="mx-4 mt-4">
 <%= simple_form_for @interview do |f| %>
   <%= f.input :role, as: :check_boxes, collection: ["Front end", "Back end", "Fullstack"], prompt: "Select a role" %>
+<<<<<<< HEAD
   <%= f.input :number_of_questions, collection: [3, 10, 20], prompt: "Select the number of questions" %>
+=======
+  <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions" %>
+>>>>>>> 3cacb209a5c77a2b6b8cd6c272658656d4e4e940
   <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
   <%= f.submit %>
 <% end %>
