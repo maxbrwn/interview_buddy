@@ -2,17 +2,19 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="showhide"
 export default class extends Controller {
-  static targets = ["input", "frontendoutput", "backendoutput", "fullstackoutput"]
+  static targets = ["input", "frontendoutput", "backendoutput", "fullstackoutput", "questionoutput"]
   connect() {
     // hide the output targets by default:
     this.frontendoutputTarget.hidden = true
     this.backendoutputTarget.hidden = true
     this.fullstackoutputTarget.hidden = true
+    this.questionoutputTarget.hidden = true
   }
 
   toggle(e) {
     console.log(e.target);
     const targetValue = e.target.dataset.value;
+    this.questionoutputTarget.hidden = false
 
     if (targetValue !== this.frontendoutputTarget.dataset.value) {
       this.frontendoutputTarget.hidden = true;
