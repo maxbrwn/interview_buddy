@@ -1,3 +1,4 @@
+<%= render "shared/navbar" %>
 <div class="containter mx-5 mt-5">
     <% question_array = @interview_questions.map do |interview_question| %>
       <% interview_question.question.content %>
@@ -32,3 +33,4 @@
     </div>
   </div>
 </div>
+<%= render "shared/footer"%>

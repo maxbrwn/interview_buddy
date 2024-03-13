@@ -1,20 +1,29 @@
 .banner {
-  background-color: peachpuff;
-  background-image: url(asset_path("candidates.webp"));
-  background-size: cover;
-  width: 1300px;
-  height: 340px;
+  width: 100%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
+  align-items:flex-start; /* Centers vertically */
   text-align: center; /* Centers text horizontally */
   color: black; /* Text color */
+  padding: 0 20px;
 }
 
 .banner h1 {
+  font-size: 60px; /* Adjust font size as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+  color: white;
+  margin-left: 80px;
+  margin-bottom: 40px;
+}
+.banner h3 {
+  margin-left: 80px;
   font-size: 40px; /* Adjust font size as needed */
   font-weight: bold; /* Adjust font weight as needed */
   color: white;
+  margin-left: 80px;
+  margin-bottom: 40px;
 }
