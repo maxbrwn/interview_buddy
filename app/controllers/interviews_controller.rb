@@ -43,18 +43,22 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    @answers = @interview.answers
-    @questions = @interview.questions
+      @answers = @interview.answers
+      @questions = @interview.questions
     @answers_feedback = @answers.pluck(:answer_feedback)
     @interview.overall_feedback
+
     # @json = JSON.parse(@interview.feedback)
     #@questions = @interview.questions.pluck(:content)
   end
 
   def my_profile
-    # get access to all the interviews of the current user
     @user_interviews = current_user.interviews
+    @interview_questions = InterviewQuestion.where(interview: @user_interviews)
+
     @bookmarks = Bookmark.where(user: current_user)
+    # @bookmarked_questions = @bookmarks.map { |bookmark| bookmark.question }
+
     # get access to the overall feedback of each interview
   end
 
