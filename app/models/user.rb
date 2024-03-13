@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :interviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :questions, through: :bookmarks
-
   def bookmarked?(question)
     questions.include?(question)
   end
+  has_many :speech_logs, dependent: :destroy
 end

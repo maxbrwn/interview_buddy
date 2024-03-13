@@ -4,17 +4,17 @@
     <div data-controller="showhide">
 
       <div class="cards">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('frontend.jpg') %>'">
+        <div data-showhide-target="frontend" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('frontend.jpg') %>'">
           <%= f.input :role, as: :boolean, label: false, input_html: { data: { showhide_target: "input", action: "change->showhide#toggle", value: "Frontend" }, class: "checkbox", id: 'input_frontend'  } %>
           <label for="input_frontend">Frontend</label>
         </div>
 
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('backend.jpg') %>'">
+        <div data-showhide-target="backend" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('backend.jpg') %>'">
           <%= f.input :role, as: :boolean, label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Backend" }, class: "checkbox", id: 'input_backend' }%>
           <label for="input_backend">Backend</label>
         </div>
 
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('fullstack.jpg') %>'">
+        <div data-showhide-target="fullstack" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('fullstack.jpg') %>'">
           <%= f.input :role, as: :boolean, label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Fullstack" }, class: "checkbox", id: 'input_fullstack' } %>
           <label for="input_fullstack">Fullstack</label>
         </div>
@@ -34,6 +34,7 @@
             prompt: "Select a language",
             collection: Interview::FRONTEND %>
         <%# <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
+          <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
         <%= f.submit %>
       </div>
       <div data-showhide-target="backendoutput" data-value='Backend'>
@@ -45,6 +46,7 @@
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::BACKEND %>
+            <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
         <%= f.submit %>
       </div>
       <div data-showhide-target="fullstackoutput" data-value='Fullstack'>
@@ -56,7 +58,8 @@
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::FULLSTACK %>
-        <%= f.submit %>
+            <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
+        <%= f.submit class: "new-interview-btn"%>
       </div>
     <% end %>
   </div>
