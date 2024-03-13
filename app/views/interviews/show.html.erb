@@ -9,8 +9,12 @@
   <% end %>
   </div>
   <div class="d-flex">
-    <%= image_tag("Avatar_1b.jpg", class: "interview-avatar me-2") %>
-  <div class="question-display mt-2 d-flex align-items-center w-100 justify-content-between", data-controller="text-to-speech" data-text="<%= question_array[@interview.answers.count] %>">
+<% if @interview.photo.attached? %>
+  <%= cl_image_tag(@interview.photo.key, class: "card-cloudinary mt-2 me-2")%>
+<% else %>
+  <%= image_tag("Avatar_1b.jpg", class: "interview-avatar me-2") %>
+<%end%>
+  <div class="question-display mt-2 d-flex align-items-center w-100 justify-content-center", data-controller="text-to-speech" data-text="<%= question_array[@interview.answers.count] %>">
       <h4>
         <%= question_array[@interview.answers.count] %>
       </h4>

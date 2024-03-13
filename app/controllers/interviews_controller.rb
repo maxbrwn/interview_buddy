@@ -65,6 +65,6 @@ class InterviewsController < ApplicationController
   end
 
   def params_interview
-    params.require(:interview).permit(:role, :language, :number_of_questions)
+    params.require(:interview).permit(:role, :language, :number_of_questions, :photo)
   end
 end
