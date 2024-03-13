@@ -126,37 +126,3 @@ end
     username: "user#{i + 1}"
   )
 end
-
-users = User.all
-
-3.times do |i|
-  Interview.create!(
-    user: users.sample,
-    feedback: "Feedback for interview #{i + 1}",
-    finished: [true, false].sample,
-    role: ['Front end'],
-    number_of_questions: rand(5..10),
-    language: ['Ruby', 'Python', 'JavaScript', 'Java'].sample
-  )
-end
-
-
-interviews = Interview.all
-questions = Question.all
-
-3.times do |i|
-  InterviewQuestion.create!(
-    interview: interviews.sample,
-    question: questions.sample
-  )
-end
-
-
-interview_questions = InterviewQuestion.all
-
-2.times do |i|
-  Answer.create!(
-    content: "Answer #{i + 1} content",
-    interview_question: interview_questions.sample
-  )
-end
