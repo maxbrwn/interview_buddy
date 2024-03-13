@@ -22,7 +22,9 @@ class InterviewsController < ApplicationController
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
     number_of_questions = @interview.number_of_questions
-    @questions = Question.all.sample(number_of_questions).uniq
+    question_ids = Question.pluck(:id)
+    sampled_question_ids = question_ids.sample(number_of_questions).uniq
+    @questions = Question.where(id: sampled_question_ids)
 
     if @interview.save
       @questions.each do |question|

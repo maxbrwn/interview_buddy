@@ -10,7 +10,7 @@
       <h4>
         <%= question_array[@interview.answers.count] %>
       </h4>
-      <button data-action="click->text-to-speech#speak" class="btn btn-dark ms-2"><i class="fa-solid fa-play"></i></button>
+      <button data-action="click->text-to-speech#speak" class="btn btn-primary ms-3 me-1"><i class="fa-solid fa-play"></i></button>
   </div>
   </div>
   <div class="input-card mt-4">
@@ -22,10 +22,10 @@
             <i class="fa-solid fa-microphone"></i>
           </span>
           <div class="d-flex align-items-center">
-          <%= a.button :submit, class: "btn btn-dark" %>
+          <%= a.button :submit, class: "btn btn-primary" %>
       <%end%>
-      <%= link_to "Skip Question", skip_question_interview_question_path(@interview_questions[@interview.answers.count]), class: "btn btn-dark mx-3" %>
-          <%= link_to "Quit session", feedback_interview_path(@interview), class: "btn btn-dark", data: { controller: "disable-buttons", disable_buttons_target: "disable", disable_buttons_current_index_value: @interview.answers.count, disable_buttons_array_size_value: @interview.number_of_questions - 1 } %>
+      <%= link_to "Skip Question", skip_question_interview_question_path(@interview_questions[@interview.answers.count]), class: "btn btn-primary mx-3" %>
+          <%= link_to "Quit session", feedback_interview_path(@interview), class: "btn btn-primary", data: { controller: "disable-buttons", disable_buttons_target: "disable", disable_buttons_current_index_value: @interview.answers.count, disable_buttons_array_size_value: @interview.number_of_questions - 1 } %>
     <% end %>
 
       </div>
