@@ -11,12 +11,18 @@
               <h2><%= interview.role %></h2>
               <h3><%= interview.language %></h3>
               <h3>
-                  <% if interview.language == "HTML" %>
+                  <% if interview.language.downcase == "html" %>
                     <i class="fa-solid fa-code" style="color: #f16529;"></i> HTML
-                  <% elsif interview.language == "css" %>
-                    <i class="fa-brands fa-css3" style="color: #254bdd;"></i> CSS
-                  <% elsif interview.language == "javascript" %>
-                    <i class="fa-brands fa-js" style="color: #f0db4f;"></i> JavaScript
+                  <% elsif interview.language.downcase == "css" %>
+                    <i class="fa-brands fa-css3" style="color: #f16529;"></i> CSS
+                  <% elsif interview.language.downcase == "javascript" %>
+                    <i class="fa-brands fa-js" style="color: #f16529;"></i> JavaScript
+                  <% elsif interview.language.downcase == "ruby" %>
+                    <i class="fa-solid fa-gem" style="color: #f16529;"></i> Ruby
+                  <% elsif interview.language.downcase == "python" %>
+                    <i class="fa-brands fa-python" style="color: #f16529;"></i> Python
+                  <% elsif interview.language.downcase == "php" %>
+                    <i class="fa-brands fa-php" style="color: #f16529;"></i> PHP
                   <% else %>
                     No specific symbol for <%= interview.language %>
                   <% end %>
