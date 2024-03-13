@@ -1,4 +1,4 @@
-
+<%= render "shared/navbar" %>
 <div class="feedback-card my-4 mx-5 ">
   <div>
     <h3 class="text-center p-2 mt-1">Your overall feedback</h3>
@@ -8,10 +8,10 @@
     <div class = "feedback">
       <div class="p-1">
         <div class = "d-flex justify-content-between" data-controller= "scroll-to-question" <%= answer.interview_question.question.id == params[:question_id].to_i ? "data-scroll-to-question-id-value=#{params[:question_id]}" : ""%>>
-          <h5 class="m-2 font-weight-bold fs-4" data-scroll-to-question-target = "question"   >Question</h5>
+          <h5 class="mt-2 font-weight-bold fs-4" data-scroll-to-question-target = "question">Question</h5>
           <%= answer.interview_question.id %>
           <%= render partial: 'bookmarks/bookmark',
-          locals: { answer: answer, interview: @interview, question: answer.interview_question.question } %>
+          locals: { question: answer.interview_question.question, answer: answer, bookmark: answer.interview_question.question.bookmarked?(current_user) } %>
         </div>
         <p class="mt-3"><%= answer.interview_question.question.content %></p>
       </div>
@@ -38,3 +38,4 @@
     </div>
   </div>
 </div>
+<%= render "shared/footer"%>

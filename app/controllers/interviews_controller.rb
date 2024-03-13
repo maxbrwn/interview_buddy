@@ -25,7 +25,10 @@ class InterviewsController < ApplicationController
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
     number_of_questions = @interview.number_of_questions
-    @questions = Question.all.sample(number_of_questions).uniq
+    @questions = Question.order("RANDOM()").limit(number_of_questions)
+    # sampled_question_ids = question_ids.sample(number_of_questions * 3).uniq
+    # @questions = Question.where(id: sampled_question_ids)
+
     if @interview.save
       @questions.each do |question|
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
@@ -42,18 +45,22 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    @answers = @interview.answers
-    @questions = @interview.questions
+      @answers = @interview.answers
+      @questions = @interview.questions
     @answers_feedback = @answers.pluck(:answer_feedback)
     @interview.overall_feedback
+
     # @json = JSON.parse(@interview.feedback)
     #@questions = @interview.questions.pluck(:content)
   end
 
   def my_profile
-    # get access to all the interviews of the current user
     @user_interviews = current_user.interviews
+    @interview_questions = InterviewQuestion.where(interview: @user_interviews)
+
     @bookmarks = Bookmark.where(user: current_user)
+    # @bookmarked_questions = @bookmarks.map { |bookmark| bookmark.question }
+
     # get access to the overall feedback of each interview
   end
 
@@ -64,6 +71,6 @@ class InterviewsController < ApplicationController
   end
 
   def params_interview
-    params.require(:interview).permit(:role, :language, :number_of_questions)
+    params.require(:interview).permit(:role, :language, :number_of_questions, :photo)
   end
 end

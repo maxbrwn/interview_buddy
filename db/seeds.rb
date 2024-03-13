@@ -8,11 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Question.destroy_all
-User.destroy_all
 Interview.destroy_all
 InterviewQuestion.destroy_all
 Answer.destroy_all
+Question.destroy_all
+User.destroy_all
 
 questions = [
   "Explain the difference between inline, block, and inline-block elements in HTML and how they affect layout.",
@@ -117,46 +117,4 @@ questions = [
 
 questions.each do |question|
   Question.create(content: question, category: "technical", role: "Front end", language: "JS")
-end
-
-10.times do |i|
-  User.create!(
-    email: "user#{i + 1}@example.com",
-    password: "123456",
-    username: "user#{i + 1}"
-  )
-end
-
-users = User.all
-
-3.times do |i|
-  Interview.create!(
-    user: users.sample,
-    feedback: "Feedback for interview #{i + 1}",
-    finished: [true, false].sample,
-    role: ['Front end'],
-    number_of_questions: rand(5..10),
-    language: ['Ruby', 'Python', 'JavaScript', 'Java'].sample
-  )
-end
-
-
-interviews = Interview.all
-questions = Question.all
-
-3.times do |i|
-  InterviewQuestion.create!(
-    interview: interviews.sample,
-    question: questions.sample
-  )
-end
-
-
-interview_questions = InterviewQuestion.all
-
-2.times do |i|
-  Answer.create!(
-    content: "Answer #{i + 1} content",
-    interview_question: interview_questions.sample
-  )
 end

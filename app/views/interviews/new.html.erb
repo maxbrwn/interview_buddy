@@ -1,3 +1,4 @@
+<%= render "shared/navbar" %>
 <div class="mx-4 mt-4 p-4">
   <%= simple_form_for @interview do |f| %>
     <div data-controller="showhide">
@@ -33,6 +34,7 @@
             prompt: "Select a language",
             collection: Interview::FRONTEND %>
         <%# <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
+          <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
         <%= f.submit %>
       </div>
       <div data-showhide-target="backendoutput" data-value='Backend'>
@@ -44,6 +46,7 @@
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::BACKEND %>
+            <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
         <%= f.submit %>
       </div>
       <div data-showhide-target="fullstackoutput" data-value='Fullstack'>
@@ -55,9 +58,11 @@
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::FULLSTACK %>
-        <%= f.submit %>
+            <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
+        <%= f.submit class: "new-interview-btn"%>
       </div>
     <% end %>
   </div>
 </div>
 </div>
+<%= render "shared/footer"%>
