@@ -19,6 +19,9 @@ class InterviewsController < ApplicationController
 
   def create
     @user_id = current_user.id
+    #to save the languages, reject the blank fields and join it in a string
+    params[:interview][:language] = params[:interview][:language].reject!(&:blank?).join(", ")
+    params[:interview][:role] = params[:interview][:role].reject!(&:blank?).first
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
     number_of_questions = @interview.number_of_questions
@@ -31,7 +34,6 @@ class InterviewsController < ApplicationController
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
         @interview_question.save
       end
-
       redirect_to interview_path(@interview)
     else
       render :new, status: :unprocessable_entity

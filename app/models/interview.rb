@@ -3,12 +3,18 @@ class Interview < ApplicationRecord
   has_many :interview_questions, dependent: :destroy
   has_many :questions, through: :interview_questions
   has_many :answers, through: :interview_questions
+  before_save :set_language
   has_one_attached :photo
+
 
   CATEGORIES = ["Frontend", "Backend", "Fullstack"]
   FRONTEND = ["html", "CSS", "JavaScript"]
   BACKEND = ["Ruby", "Python", "PHP"]
   FULLSTACK = ["html", "CSS", "JavaScript", "Ruby", "Python", "PHP", "React", "Angular", "Rails"]
+
+  def set_language
+
+  end
 
   def overall_feedback
     @all_questions = questions.pluck(:content)

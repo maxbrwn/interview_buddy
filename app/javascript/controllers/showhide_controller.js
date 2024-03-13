@@ -9,7 +9,10 @@ export default class extends Controller {
     this.backendoutputTarget.hidden = true
     this.fullstackoutputTarget.hidden = true
     this.questionoutputTarget.hidden = true
-  }
+    document.querySelectorAll("legend").forEach(element => {
+      element.classList.add("d-none")
+    });
+    }
 
 
   toggle(e) {
