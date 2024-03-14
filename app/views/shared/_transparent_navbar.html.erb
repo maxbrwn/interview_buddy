@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="transparent-navbar">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "interview_buddy_icon.png", alt: "application logo"%>
@@ -12,13 +12,13 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "My interviews", my_profile_path, method: :get, class: "nav-link", style: "margin-right: 20px; text-decoration: underline;" %>
+            <%= link_to "My interviews", my_profile_path, method: :get, class: "nav-link text-light", style: "margin-right: 20px; text-decoration: underline;" %>
           </li>
           <li class="nav-item">
-            <%= button_to "Create interview", new_interview_path, method: :get, class: "btn btn-primary", style: "border-radius: 20px; margin-right: 20px;"%>
+            <%= button_to "Create interview", new_interview_path, method: :get, class: "btn btn-light", style: "border-radius: 20px; margin-right: 20px;"%>
           </li>
           <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+            <%= link_to "Home", "#", class: "nav-link text-light" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

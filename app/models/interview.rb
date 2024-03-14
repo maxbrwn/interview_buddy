@@ -4,6 +4,8 @@ class Interview < ApplicationRecord
   has_many :questions, through: :interview_questions
   has_many :answers, through: :interview_questions
   before_save :set_language
+  has_one_attached :photo
+
 
   CATEGORIES = ["Frontend", "Backend", "Fullstack"]
   FRONTEND = ["html", "CSS", "JavaScript"]

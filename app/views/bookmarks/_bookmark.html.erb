@@ -1,16 +1,15 @@
-<% bookmark = current_user.bookmarks.find_by(question_id: answer.interview_question.question.id)  %>
 <% if bookmark %>
   <div data-bookmark-render-target="bookmark"
   data-action="click->bookmark-render#destroy"
   data-controller="bookmark-render"
-  data-bookmark-render-url-value=<%= bookmark_destroy_path(bookmark, interview_id: interview.id )  %> >
+  data-bookmark-render-url-value=<%= bookmark_destroy_path(bookmark)  %> >
     <i class="fa-solid fa-bookmark fs-3 m-2"></i>
   </div>
 <% else %>
   <div data-bookmark-render-target="bookmark"
   data-action="click->bookmark-render#create"
   data-controller="bookmark-render"
-  data-bookmark-render-url-value=<%= question_bookmarks_path(question, interview_id: interview.id ) %> >
+  data-bookmark-render-url-value=<%= question_bookmarks_path(question) %> >
     <i class="fa-regular fa-bookmark fs-3 m-2"></i>
   </div>
 <% end %>
