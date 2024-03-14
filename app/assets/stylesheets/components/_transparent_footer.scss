@@ -20,12 +20,11 @@
 .trans-footer-links a {
   text-decoration: none;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   padding: 0px 10px;
 }
 .trans-footer-links a:hover {
-  color: white;
-  opacity: 0.5;
+  color: #02fbc8;
 }
 .trans-footer .fa-heart {
   color: #D23333;
@@ -35,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content:space-around;
-  font-size: 25px;
+  font-size: 20px;
   padding: 0px 10px;
   width: 100%;
 }
@@ -48,6 +47,6 @@
 }
 
 .trans-footer-copyright a:hover {
-  color: white;
-  opacity: 0.5;
+  color: #02fbc8;
+  // opacity: 0.5;
 }
