@@ -24,7 +24,7 @@
           <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
         </div>
       </div>
-      <div data-showhide-target="frontendoutput" data-value='Frontend'>
+      <div data-showhide-target="frontendoutput" data-value='Frontend' class="centered-text">
         <%= f.input :language,
             as: :check_boxes,
             collection_wrapper_tag: 'div',
@@ -34,7 +34,7 @@
             prompt: "Select a language",
             collection: Interview::FRONTEND %>
         <%# <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
-          <%= f.input :photo, as: :file, label: "Upload your interview buddy", class:"new-font" %>
+          <%= f.input :photo, as: :file, label: "Upload your interview buddy", label_html: { class: "new-font" } %>
         <%= f.submit class: "new-interview-btn"%>
       </div>
       <div data-showhide-target="backendoutput" data-value='Backend'>

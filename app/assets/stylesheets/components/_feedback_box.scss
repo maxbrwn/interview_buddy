@@ -3,7 +3,8 @@
   border: 1px solid white;
   padding: 20px;
   margin-bottom: 17px;
-  background-color: rgb(187, 187, 113);
+  background-color: #E1DEE2;
+  // #D9D2D2
   // background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -21,7 +22,7 @@
 }
 
 .feedback-box h2 {
-  color: #333;
+  color: black;
   font-size: 25px;
   margin-bottom: 25px;
   margin-left: 15px;
@@ -29,7 +30,7 @@
 }
 
 .feedback-box h3 {
-  color: #666;
+  color: black;
   font-size: 20px;
   margin-bottom: 20px;
   margin-left: 15px;
@@ -50,8 +51,8 @@
   margin-bottom: 10px;
   margin-top: 10px;
   // background-color: #f9f9f9;
-  background-color: white;
-  color: #333;
+  background-color: #002949;
+  color:#00FFB9;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-right: 60px;
@@ -65,7 +66,7 @@ padding-bottom: 10px;
 
 .feedback-profile-page{
   position: relative;
-  margin-bottom: 100px;
+  // margin-bottom: 100px;
 }
 
 .bookmark-box {
@@ -73,13 +74,14 @@ padding-bottom: 10px;
   border: 1px solid white;
   padding: 20px;
   margin-bottom: 17px;
-  background-color: rgb(187, 187, 113);
+  background-color: #E1DEE2;
   // background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   cursor: pointer;
   border-radius: 10px;
   font-size: 20px;
+  color: black;
 }
 
 // .feedback-profile-page > a {
@@ -108,13 +110,12 @@ padding-bottom: 10px;
 .bookmark-header{
   // border: 1px solid #ccc;
   border: 1px solid white;
-
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
   // background-color: #f9f9f9;
-  background-color: white;
-  color: #333;
+  background-color: #002949;
+  color: #00FFB9;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-left: 60px;
@@ -128,7 +129,7 @@ padding-bottom: 10px;
 
 .bookmark{
   position: relative;
-  margin-bottom: 100px;
+  // margin-bottom: 100px;
   margin-top: 7px;
 }
 
