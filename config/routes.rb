@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: [:destroy], as: :bookmark_destroy
   post '/generate_speech', to: 'audio#generate_speech'
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
 end

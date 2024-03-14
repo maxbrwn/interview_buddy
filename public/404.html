@@ -51,17 +51,58 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .error {
+    height: 700px;
+    margin-top: 20px;
+  }
+
+  .error-page {
+    background-color: #0E1E25;
+    color: #2ea67e;
+    text-align: center;
+    margin-top: 20px;
+
+  }
+
+  .error-page h1 {
+    font-size: 40px;
+  }
+
+  .error-page p{
+    font-size: 35px;
+    width: 50%;
+    margin-top: 0px;
+  }
+  .error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class=" error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
+  <div class="error-message">
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <h1>The Painful Path to Growth includes failure!</h1>
   </div>
+    <p class="fs-2">So many years have passed since first you sought
+      the lands beyond the edges of the sky,
+      so many moons reflected in your eye,
+      (familiar newness, fear of leaving port),
+      since first you sought, and failed, and learned to fall,
+      (first hope, then cynicism, silent dread,
+      the countless stars, still counting overhead
+      the seconds to your final voyage of all...)
+        and last, in glory gold and red around
+        your greatest search, your final quest to know!
+        yet... ashes drift, the embers cease to glow,
+        and darkened life in frozen death is drowned;
+      and ashes on the swell are seen no more.
+      The silence surges. **Error 404.</p>
+  </div>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2ZrYnhqeHUxMGllbXBrYmI0MWNsZDE3dGRrZG4zY2RmdGRlY202cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w89ak63KNl0nJl80ig/giphy.gif" class="error" />
 </body>
 </html>

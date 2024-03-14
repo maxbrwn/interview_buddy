@@ -28,7 +28,7 @@
         <%= a.input :content, label: false, input_html: { class: 'answer-input fs-4 text-muted', placeholder: '# Enter your answer right here or click on the microphone to answer by speech.', data: { voice_input_target: 'input' } } %>
         <div class="d-flex mt-2 justify-content-between">
           <span class="ms-2 fs-2" data-action="click->voice-input#record" style="cursor: pointer; text-decoration: underline" data-target="voice-input.startButton">
-            <i class="fa-solid fa-microphone"></i>
+            <i class="fa-solid fa-microphone text-white"></i>
           </span>
           <div class="d-flex align-items-center">
       <%= link_to "Skip Question", skip_question_interview_question_path(@interview_questions[@interview.answers.count]), class: "btn btn-primary" %>
