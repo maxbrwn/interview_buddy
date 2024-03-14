@@ -26,9 +26,6 @@ class InterviewsController < ApplicationController
     @interview.user_id = @user_id
     number_of_questions = @interview.number_of_questions
     @questions = Question.order("RANDOM()").limit(number_of_questions).uniq
-    # sampled_question_ids = question_ids.sample(number_of_questions * 3).uniq
-    # @questions = Question.where(id: sampled_question_ids)
-
     if @interview.save
       @questions.each do |question|
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
