@@ -20,7 +20,7 @@
         </div>
       </div>
       <div data-showhide-target="questionoutput" data-value='Question'>
-        <div class="question-amount mt-4 text-center">
+        <div class="question-amount mt-4 mb-4 text-center">
           <%= f.input :number_of_questions, collection: [3, 5, 8, 10, 15, 20], prompt: "Select the number of questions", label: false %>
         </div>
       </div>
@@ -34,8 +34,8 @@
             prompt: "Select a language",
             collection: Interview::FRONTEND %>
         <%# <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
-          <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
-        <%= f.submit %>
+          <%= f.input :photo, as: :file, label: "Upload your interview buddy", class:"new-font" %>
+        <%= f.submit class: "new-interview-btn"%>
       </div>
       <div data-showhide-target="backendoutput" data-value='Backend'>
         <%= f.input :language,
@@ -47,7 +47,7 @@
             prompt: "Select a language",
             collection: Interview::BACKEND %>
             <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
-        <%= f.submit %>
+        <%= f.submit class: "new-interview-btn"%>
       </div>
       <div data-showhide-target="fullstackoutput" data-value='Fullstack'>
         <%= f.input :language,

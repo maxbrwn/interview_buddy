@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .container-home {
-  background-image: url(asset_path("grow_home.png"));
+  background-image: url(asset_path("plant_3_1.jpeg"));
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -24,8 +24,8 @@
   transition:ease-in-out 0.3s;
 }
 .get_started_button:hover {
-  background-color: #efeeee;
-  color: black;
+  background-color: #092948;
+  color: #00cccb;
   text-decoration: none;
   padding: 25px 35px;
   border-radius: 50px;

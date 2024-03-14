@@ -14,7 +14,8 @@ class Answer < ApplicationRecord
       2.Are variable and function names meaningful?
       3.How well does the interviewee break down the problem?
       4.Does the interviewee articulate their thought process clearly?
-      Provide your feedback, without any of your own answers like 'Here is a simple recipe'."}]
+      Provide your feedback, without any of your own answers like 'Here is a simple recipe'.
+      'I dont know' as answer is always a Rating: 0/10"}]
     })
     # Save Chat GPT answer into answer_feedback variable
     # answer_feedback = chaptgpt_answer_feedback["choices"][0]["message"]["content"]

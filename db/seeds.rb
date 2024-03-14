@@ -115,6 +115,9 @@ questions = [
   "Describe the purpose of the HTML5 <video> and <audio> elements, and how you can use them to embed multimedia content."
 ];
 
-questions.each do |question|
-  Question.create(content: question, category: "technical", role: "Front end", language: "JS")
-end
+
+demo_questions = ["Describe the box model in CSS and explain its components.", "How do you add and remove classes from an HTML element using JavaScript?", "How do you center an element horizontally and vertically in CSS?", "How do you implement a sticky header or footer in a webpage using CSS?", "What is the difference between '==' and '===' in JavaScript?"]
+
+  demo_questions.each do |question|
+    Question.create(content: question, category: "technical", role: "Front end", language: "JS")
+  end
