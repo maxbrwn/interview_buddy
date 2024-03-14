@@ -1,21 +1,22 @@
+<%= render "shared/navbar" %>
 <div class="mx-4 mt-4 p-4">
   <%= simple_form_for @interview do |f| %>
     <div data-controller="showhide">
-
+<%# hide check_boxed collection, label %>
       <div class="cards">
-        <div data-showhide-target="frontend" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('frontend.jpg') %>'">
-          <%= f.input :role, as: :boolean, label: false, input_html: { data: { showhide_target: "input", action: "change->showhide#toggle", value: "Frontend" }, class: "checkbox", id: 'input_frontend'  } %>
-          <label for="input_frontend">Frontend</label>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('frontend.jpg') %>'">
+          <%= f.input :role, as: :check_boxes,collection: ["Frontend"], checked_value: 'Frontend', unchecked_value: 'not_done', label: false, input_html: { data: { showhide_target: "input", action: "change->showhide#toggle", value: "Frontend" }, class: "checkbox", id: 'input_frontend' } %>
+          <%# <label for="input_frontend">Frontend</label> %>
         </div>
 
-        <div data-showhide-target="backend" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('backend.jpg') %>'">
-          <%= f.input :role, as: :boolean, label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Backend" }, class: "checkbox", id: 'input_backend' }%>
-          <label for="input_backend">Backend</label>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('backend.jpg') %>'">
+          <%= f.input :role, as: :check_boxes,collection: ["Backend"], checked_value: 'Backend', unchecked_value: 'not_done', label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Backend" }, class: "checkbox", id: 'input_backend' }%>
+          <%# <label for="input_backend">Backend</label> %>
         </div>
 
-        <div data-showhide-target="fullstack" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('fullstack.jpg') %>'">
-          <%= f.input :role, as: :boolean, label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Fullstack" }, class: "checkbox", id: 'input_fullstack' } %>
-          <label for="input_fullstack">Fullstack</label>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('fullstack.jpg') %>'">
+          <%= f.input :role, as: :check_boxes,collection: ["Fullstack"], checked_value: 'Fullstack', unchecked_value: 'not_done', label: false, input_html: { data: {showhide_target: "input", action: "change->showhide#toggle", value: "Fullstack" }, class: "checkbox", id: 'input_fullstack' } %>
+          <%# <label for="input_fullstack">Fullstack</label> %>
         </div>
       </div>
       <div data-showhide-target="questionoutput" data-value='Question'>
@@ -33,6 +34,7 @@
             prompt: "Select a language",
             collection: Interview::FRONTEND %>
         <%# <%= f.input :language, as: :check_boxes, collection: ["HTML", "CSS", "JavaScript"], prompt: "Select a language" %>
+          <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
         <%= f.submit %>
       </div>
       <div data-showhide-target="backendoutput" data-value='Backend'>
@@ -44,6 +46,7 @@
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::BACKEND %>
+            <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
         <%= f.submit %>
       </div>
       <div data-showhide-target="fullstackoutput" data-value='Fullstack'>
@@ -55,9 +58,11 @@
             input_html: {class: 'language-selector'},
             prompt: "Select a language",
             collection: Interview::FULLSTACK %>
-        <%= f.submit %>
+            <%= f.input :photo, as: :file, label: "Upload your interview buddy" %>
+        <%= f.submit class: "new-interview-btn"%>
       </div>
     <% end %>
   </div>
 </div>
 </div>
+<%= render "shared/footer"%>

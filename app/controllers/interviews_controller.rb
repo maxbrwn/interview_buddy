@@ -19,6 +19,9 @@ class InterviewsController < ApplicationController
 
   def create
     @user_id = current_user.id
+    #to save the languages, reject the blank fields and join it in a string
+    params[:interview][:language] = params[:interview][:language].reject!(&:blank?).join(", ")
+    params[:interview][:role] = params[:interview][:role].reject!(&:blank?).first
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
     number_of_questions = @interview.number_of_questions
@@ -31,7 +34,6 @@ class InterviewsController < ApplicationController
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
         @interview_question.save
       end
-
       redirect_to interview_path(@interview)
     else
       render :new, status: :unprocessable_entity
@@ -43,18 +45,22 @@ class InterviewsController < ApplicationController
   end
 
   def feedback
-    @answers = @interview.answers
-    @questions = @interview.questions
+      @answers = @interview.answers
+      @questions = @interview.questions
     @answers_feedback = @answers.pluck(:answer_feedback)
     @interview.overall_feedback
+
     # @json = JSON.parse(@interview.feedback)
     #@questions = @interview.questions.pluck(:content)
   end
 
   def my_profile
-    # get access to all the interviews of the current user
     @user_interviews = current_user.interviews
+    @interview_questions = InterviewQuestion.where(interview: @user_interviews)
+
     @bookmarks = Bookmark.where(user: current_user)
+    # @bookmarked_questions = @bookmarks.map { |bookmark| bookmark.question }
+
     # get access to the overall feedback of each interview
   end
 
@@ -65,6 +71,6 @@ class InterviewsController < ApplicationController
   end
 
   def params_interview
-    params.require(:interview).permit(:role, :language, :number_of_questions)
+    params.require(:interview).permit(:role, :language, :number_of_questions, :photo)
   end
 end

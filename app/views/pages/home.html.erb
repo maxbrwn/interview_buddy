@@ -1,19 +1,21 @@
-<div class="container">
+<div class="container-home">
+  <%= render "shared/transparent_navbar" %>
   <div class="banner">
-  <h1><%= "Welcome to your Interview Buddy" %></h1>
+    <h1><%= "Welcome to your INTERVIEW_buddy" %></h1>
+    <h3><%= "Improve your developer knowledge remotelly and charge free" %></h3>
+    <div id= "get_started_button_div">
+      <%= button_to "Get started", new_interview_path, method: :get, class:"get_started_button"%>
+    </div>
   </div>
-
-<hr>
-<div class="profile-body">
-  <div class="img-1">
-    <%= image_tag "virtualinterviews.jpg", width: "430px", height: "160px", alt: "virtual interview pic" %>
-  </div>
-  <div class="Get-start-button">
-    <%= button_to "Get started", new_interview_path, method: :get, class: "btn btn-primary" %>
-  </div>
-  <div class="img-2">
-    <%= image_tag "quote.jpeg", width: "430px", height: "160px", alt: "motivational quote" %>
-  </div>
+  <%= render "shared/transparent_footer"%>
 </div>
-<hr>
-</div>
+  <%# <hr>
+  <div class="profile-body">
+    <div class="img-1">
+      <%= image_tag "computer-programming.png", width: "430px", alt: "virtual interview pic" %>
+    <%# </div> %>
+    <%# <div class="img-2"> %>
+      <%# <%= image_tag "quote.jpeg", width: "430px", alt: "motivational quote" %>
+    <%# </div> %>
+  <%# </div> %>
+  <%# <hr> %>

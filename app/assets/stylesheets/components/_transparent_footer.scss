@@ -1,0 +1,53 @@
+.trans-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  opacity: 1;
+  margin-top: auto;
+}
+.trans-footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.trans-footer-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  padding: 0px 10px;
+}
+.trans-footer-links a:hover {
+  color: white;
+  opacity: 0.5;
+}
+.trans-footer .fa-heart {
+  color: #D23333;
+}
+
+.trans-footer-copyright {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  font-size: 25px;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+.trans-footer-copyright a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding:0px 10px;
+}
+
+.trans-footer-copyright a:hover {
+  color: white;
+  opacity: 0.5;
+}

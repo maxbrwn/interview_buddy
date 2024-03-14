@@ -1,3 +1,4 @@
+<%= render "shared/navbar" %>
 <div class="container">
   <div class="row">
   <div class="col-md-6">
@@ -9,20 +10,33 @@
           <a href="<%= feedback_interview_path(interview)%>">
             <div class="feedback-box">
               <h2><%= interview.role %></h2>
-              <h3><%= interview.language %></h3>
               <h3>
-                  <% if interview.language == "HTML" %>
+              <% interview.language.split(", ").each do |language| %>
+                  <% if language.downcase == "html" %>
                     <i class="fa-solid fa-code" style="color: #f16529;"></i> HTML
-                  <% elsif interview.language == "css" %>
-                    <i class="fa-brands fa-css3" style="color: #254bdd;"></i> CSS
-                  <% elsif interview.language == "javascript" %>
-                    <i class="fa-brands fa-js" style="color: #f0db4f;"></i> JavaScript
+                  <% elsif language.downcase == "css" %>
+                    <i class="fa-brands fa-css3" style="color: #3B00DB;"></i> CSS
+                  <% elsif language.downcase == "javascript" %>
+                    <i class="fa-brands fa-js" style="color: #808000;"></i> JavaScript
+                  <% elsif language.downcase == "ruby" %>
+                    <i class="fa-solid fa-gem" style="color: #CE2029;"></i> Ruby
+                  <% elsif language.downcase == "python" %>
+                    <i class="fa-brands fa-python" style="color: #FFC40C;"></i> Python
+                  <% elsif language.downcase == "php" %>
+                    <i class="fa-brands fa-php" style="color: #DF00FF;"></i> PHP
+                  <% elsif language.downcase == "react" %>
+                    <i class="fa-brands fa-react" style="color: #0070FF;"></i> React
+                  <% elsif language.downcase == "angular" %>
+                    <i class="fa-brands fa-angular" style="color: #CE2029;"></i> Angular
+                  <% elsif language.downcase == "rails" %>
+                    <i class="fa-solid fa-train-track" style="color: #f16529;"></i> Rails
                   <% else %>
                     No specific symbol for <%= interview.language %>
                   <% end %>
+              <% end %>
               </h3>
               <h3><i class="fa-solid fa-clipboard-question" style="color: blue;"></i> Number of questions: <%= interview.number_of_questions%></h3>
-              <p>&#128197; <%= interview.created_at.strftime("%B %d, %Y %H:%M") %></p>
+              <p>&#128197; <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
               <%# Render feedback content here %>
             </div>
           </a>
@@ -38,6 +52,7 @@
           <% @bookmarks.each do |b| %>
             <div class="bookmark-box">
               <%= b.question.content %>
+              <%= render partial: 'bookmarks/bookmark', locals:  {bookmark: b,question: b.question } %>
               <hr>
             </div>
           <% end %>
@@ -46,3 +61,4 @@
   </div>
 </div>
 </div>
+<%= render "shared/footer"%>
