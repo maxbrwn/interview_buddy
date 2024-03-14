@@ -51,16 +51,36 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  .error {
+    height: 700px;
+  }
+
+  .error-page {
+    background-color: #0E1E25;
+    color: #2ea67e;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .error-page h1 {
+    font-size: 40px;
+  }
+
+  .error-page p{
+    font-size: 35px;
+  }
+
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class=" error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
+  <div>
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <h1>The Painful Path to Growth includes failure!</h1>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p class="fs-2">Please go back.</p>
   </div>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5qcWozdW05YnAxYjlvM3RkZHlqYWE3d3JjNjUweG5ydTk2eHBsMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdv5okG3TzMJ9pQY/giphy.gif" class="error" />
 </body>
 </html>

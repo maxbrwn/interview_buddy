@@ -102,7 +102,7 @@ export default class extends Controller {
     const startButton = this.startButtonTarget;
     if (this.speaking) {
       this.stopRecording();
-      startButton.innerHTML = "<span style='color: black;'><i class='fa-solid fa-microphone'></i></span>";
+      startButton.innerHTML = "<span style='color: white;'><i class='fa-solid fa-microphone'></i></span>";
     } else {
       this.startRecording();
       startButton.innerHTML = "<span style='color: red;'><i class='fa-solid fa-microphone'></i></span>";
