@@ -1,10 +1,10 @@
 <%= render "shared/navbar" %>
 <div class="container">
   <div class="row">
-  <div class="col-md-6">
+  <div class="col-lg-6">
     <div class="feedback-header">
       <h1>My Interview Feedbacks</h1>
-      <div class="feedback">
+      <div class="feedback-profile-page">
         <% @user_interviews.each do |interview| %>
         <%# <h4><%= text_field_tag "interview_role_#{interview.id}", '', class: "editable-role", placeholder: "Type here..."%></h4>
           <a href="<%= feedback_interview_path(interview)%>">
@@ -13,30 +13,40 @@
               <h3>
               <% interview.language.split(", ").each do |language| %>
                   <% if language.downcase == "html" %>
-                    <i class="fa-solid fa-code" style="color: #f16529;"></i> HTML
+                    <i class="fa-solid fa-code" style="color: #f16529; margin-right: 5px; font-size: 20px;"></i> HTML
+                    <span style="margin-right: 10px; font-size: 20px;"></span>
                   <% elsif language.downcase == "css" %>
-                    <i class="fa-brands fa-css3" style="color: #3B00DB;"></i> CSS
+                    <i class="fa-brands fa-css3" style="color: #3B00DB; margin-right: 5px; font-size: 20px;"></i> CSS
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "javascript" %>
-                    <i class="fa-brands fa-js" style="color: #808000;"></i> JavaScript
+                    <i class="fa-brands fa-js" style="color: #808000; margin-right: 5px; font-size: 20px;"></i> JavaScript
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "ruby" %>
-                    <i class="fa-solid fa-gem" style="color: #CE2029;"></i> Ruby
+                    <i class="fa-solid fa-gem" style="color: #CE2029; margin-right: 5px; font-size: 20px;"></i> Ruby
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "python" %>
-                    <i class="fa-brands fa-python" style="color: #FFC40C;"></i> Python
+                    <i class="fa-brands fa-python" style="color: #FFC40C; margin-right: 5px; font-size: 20px;"></i> Python
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "php" %>
-                    <i class="fa-brands fa-php" style="color: #DF00FF;"></i> PHP
+                    <i class="fa-brands fa-php" style="color: #DF00FF; margin-right: 5px; font-size: 20px;"></i> PHP
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "react" %>
-                    <i class="fa-brands fa-react" style="color: #0070FF;"></i> React
+                    <i class="fa-brands fa-react" style="color: #0070FF; margin-right: 5px; font-size: 20px;"></i> React
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "angular" %>
-                    <i class="fa-brands fa-angular" style="color: #CE2029;"></i> Angular
+                    <i class="fa-brands fa-angular" style="color: #CE2029; margin-right: 5px; font-size: 20px;"></i> Angular
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% elsif language.downcase == "rails" %>
-                    <i class="fa-solid fa-train-track" style="color: #f16529;"></i> Rails
+                    <i class="fa-solid fa-train-track" style="color: #f16529; margin-right: 5px; font-size: 20px;"></i> Rails
+                    <span style="margin-right: 12px; font-size: 20px;"></span>
                   <% else %>
                     No specific symbol for <%= interview.language %>
                   <% end %>
               <% end %>
               </h3>
-              <h3><i class="fa-solid fa-clipboard-question" style="color: blue;"></i> Number of questions: <%= interview.number_of_questions%></h3>
-              <p>&#128197; <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
+              <h3><i class="fa-solid fa-clipboard-question" style="color: blue;"></i> Number of questions: <%=  interview.number_of_questions%></h3>
+              <p style="position: relative; top: -140px; right: -440px;">&#128197; <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
+              <%# <p>&#128197; <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
               <%# Render feedback content here %>
             </div>
           </a>
@@ -45,7 +55,7 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-lg-6">
     <div class ="bookmark-header">
       <h1>My Bookmark questions</h1>
         <div class="bookmark">
@@ -53,7 +63,7 @@
             <div class="bookmark-box">
               <%= b.question.content %>
               <%= render partial: 'bookmarks/bookmark', locals:  {bookmark: b,question: b.question } %>
-              <hr>
+              <%# <hr> %>
             </div>
           <% end %>
         </div>

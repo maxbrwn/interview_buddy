@@ -134,7 +134,7 @@
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  font-size: 12px;
+  font-size: 15px;
   text-align: left;
   padding: 10px 10px 30px 10px;
   border: 1px solid #EAEAEA;
@@ -234,8 +234,4 @@
 #interview_language_rails:checked + label {
   background-color: #ce140e;
   border-color: #ce140e;
-}
-
-.col-form-label_pt-0 {
-display: none;
 }

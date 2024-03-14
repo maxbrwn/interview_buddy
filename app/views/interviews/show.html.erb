@@ -6,7 +6,8 @@
   <div class="mb-3 d-flex justify-content-between mx-3">
   <h3 ><%= @interview.answers.count + 1%> / <%= @interview.number_of_questions%></h3>
   <%= link_to feedback_interview_path(@interview), data: { controller: "disable-buttons", disable_buttons_target: "disable", disable_buttons_current_index_value: @interview.answers.count, disable_buttons_array_size_value: @interview.number_of_questions - 1 } do %>
-      <i class="fas fa-xmark fs-3"></i>
+      <%# <i class="fas fa-xmark fs-3" style="color: white;"></i> %>
+      <i class="fas fa-xmark fs-3 hover-effect" style="color: white;"></i>
   <% end %>
   </div>
   <div class="d-flex">
