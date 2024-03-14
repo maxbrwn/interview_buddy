@@ -1,16 +1,16 @@
 .footer {
-  position: fixed;
+  // position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: lightblue;
+  background: #0E1E25;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
   opacity: 1;
-  box-shadow: 0px 1px 3px gray;
   margin-top: auto;
+  border-top: 0;
 }
 .footer-links {
   display: flex;
@@ -20,12 +20,12 @@
 }
 .footer-links a {
   text-decoration: none;
-  color: red($color: #000000);
-  font-size: 24px;
+  color: white;
+  font-size: 20px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
-  color: blue;
+  color: #02fbc8;
 }
 .footer .fa-heart {
   color: #D23333;
@@ -42,11 +42,11 @@
 
 .footer-copyright a {
   text-decoration: none;
-  color: red;
+  color: white;
   text-align: center;
   padding:0px 10px;
 }
 
 .footer-copyright a:hover {
-  color: blue;
+  color: #02fbc8;
 }
