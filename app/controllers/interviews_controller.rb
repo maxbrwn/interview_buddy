@@ -24,8 +24,9 @@ class InterviewsController < ApplicationController
     params[:interview][:role] = params[:interview][:role].reject!(&:blank?).first
     @interview = Interview.new(params_interview)
     @interview.user_id = @user_id
-    number_of_questions = @interview.number_of_questions
-    @questions = Question.order("RANDOM()").limit(number_of_questions).uniq
+  # number_of_questions = @interview.number_of_questions
+    # @questions = Question.order("RANDOM()").limit(number_of_questions).uniq
+    @questions = Question.all
     if @interview.save
       @questions.each do |question|
         @interview_question = InterviewQuestion.new(interview: @interview, question: question)
