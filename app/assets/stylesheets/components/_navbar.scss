@@ -15,7 +15,7 @@
 
 .nav-btn {
   background-color: #07193c;
-  border: 0;
+  border: 0.1px solid #ffffff90;
   border-radius: 100px;
   box-sizing: border-box;
   color: #ffffff;
@@ -37,5 +37,14 @@
 
 .nav-btn:hover {
   background-color: #092948;
+  color: #00cccb;
+  border: 0.1px solid #00cccb;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
   color: #00cccb;
 }
