@@ -1,5 +1,5 @@
 <%= render "shared/navbar" %>
-<div class="container">
+<div class="container d-flex justify-content-center">
   <div class="row">
   <div class="col-lg-6">
     <div class="feedback-header">
@@ -9,7 +9,12 @@
         <%# <h4><%= text_field_tag "interview_role_#{interview.id}", '', class: "editable-role", placeholder: "Type here..."%></h4>
           <a href="<%= feedback_interview_path(interview)%>">
             <div class="feedback-box">
+              <div class="d-flex justify-content-between">
               <h2><%= interview.role %></h2>
+              <div class="d-flex">
+              <i class="fa-solid fa-calendar-days mt-1"></i> <p class="ms-2"> <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
+                </div>
+              </div>
               <h3>
               <% interview.language.split(", ").each do |language| %>
                   <% if language.downcase == "html" %>
@@ -44,8 +49,7 @@
                   <% end %>
               <% end %>
               </h3>
-              <h3><i class="fa-solid fa-clipboard-question" style="color: blue;"></i> Number of questions: <%=  interview.number_of_questions%></h3>
-              <p style="position: relative; top: -140px; right: -220px;">&#128197; <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
+              <h3 class="pt-2"><i class="fa-solid fa-clipboard-question" style="color: blue;"></i> Number of questions: <%=  interview.number_of_questions%></h3>
               <%# <p>&#128197; <%= (interview.created_at + 1.hour).strftime("%B %d, %Y %H:%M") %></p>
               <%# Render feedback content here %>
             </div>
