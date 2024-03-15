@@ -8,7 +8,7 @@
       <div class="p-1">
         <div class = "d-flex justify-content-between" data-controller= "scroll-to-question" <%= answer.interview_question.question.id == params[:question_id].to_i ? "data-scroll-to-question-id-value=#{params[:question_id]}" : ""%>>
           <h5 class="mt-2 font-weight-bold fs-4" data-scroll-to-question-target = "question">Question</h5>
-          <%= answer.interview_question.id %>
+          <%# <%= answer.interview_question.id %>
           <%= render partial: 'bookmarks/bookmark',
           locals: { question: answer.interview_question.question, answer: answer, bookmark: answer.interview_question.question.bookmarked?(current_user) } %>
         </div>
