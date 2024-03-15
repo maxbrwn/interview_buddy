@@ -116,7 +116,7 @@ questions = [
 ];
 
 
-demo_questions = ["Describe the box model in CSS and explain its components.", "How do you add and remove classes from an HTML element using JavaScript?", "How do you center an element horizontally and vertically in CSS?", "How do you implement a sticky header or footer in a webpage using CSS?", "What is the difference between '==' and '===' in JavaScript?"]
+demo_questions = ["What is the CSS specificity hierarchy, and how does it determine which styles are applied to an element?", "Explain the purpose of the CSS ‘z-index’ property and how it affects the stacking order of elements", "What is a callback function in JavaScript, and why are they commonly used in asynchronous programming?"]
 
   demo_questions.each do |question|
     Question.create(content: question, category: "technical", role: "Front end", language: "JS")

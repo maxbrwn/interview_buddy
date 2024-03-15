@@ -1,7 +1,7 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
   width: 100%;
   background: #0E1E25;
   display: flex;
@@ -49,4 +49,10 @@
 
 .footer-copyright a:hover {
   color: #02fbc8;
+}
+
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
